@@ -4,16 +4,16 @@
 
 <div class="login-right-wrap">
     <h1 class="mb-3">@yield('title') </h1>
-    <form action="{{route('register')}}" method="POST">
+    <form action="{{route('login')}}" method="POST">
         @csrf
         <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="Email">
+            <input class="form-control" type="email" name="email" value="{{old('email')}}"laceholder="Email">
             @error('email')
                 <p> {{$message}} </p>
             @enderror
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" name="password" placeholder="Mot de passe">
+            <input class="form-control" type="password" name="password" value="{{old('password')}}"laceholder="Mot de passe">
             @error('password')
                 <p> {{$message}} </p>
             @enderror
@@ -34,7 +34,6 @@
             </div>
         </div>
     </form>
-
 </div>
 @endsection
 

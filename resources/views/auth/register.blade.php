@@ -6,26 +6,25 @@
     <form action="{{route('register')}}" method="POST">
         @csrf
         <div class="form-group">
-            <input class="form-control" type="name" name="name" placeholder="Nom complet">
+            <input class="form-control" type="name" name="name" value="{{old('name')}}" placeholder="Nom complet">
             @error('name')
                 <p class="text-red-400"> {{$message}} </p>
             @enderror
         </div>
         <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="Email">
+            <input class="form-control" type="email" name="email" value="{{old('email')}}" placeholder="Email">
             @error('email')
                 <p> {{$message}} </p>
             @enderror
         </div>
         <div class="form-group">
-            <input class="form-control" type="text" name="password" placeholder="Mot de passe">
+            <input class="form-control" type="password" name="password" value="{{old('password')}}" placeholder="Mot de passe">
             @error('password')
                 <p> {{$message}} </p>
             @enderror
         </div>
-            
         <div class="form-group">
-            <input class="form-control" type="text" name="password_confirmation" placeholder="Confirmer Mot de passe">
+            <input class="form-control" type="password" name="password_confirmation" value="{{old('password_confirmation')}}" placeholder="Confirmer Mot de passe">
             @error('password_confirmation')
                 <p> {{$message}} </p>
             @enderror

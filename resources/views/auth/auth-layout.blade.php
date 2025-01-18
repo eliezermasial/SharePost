@@ -12,13 +12,16 @@
 	<link rel="stylesheet" href="{{"back_auth/assets/css/feathericon.min.css"}}">
 	<link rel="stylesheet" href="{{"back_auth/assets/plugins/morris/morris.css"}}">
 	<link rel="stylesheet" href="{{"back_auth/assets/css/style.css"}}"> </head>
+	@vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <body>
 	<div class="main-wrapper login-body">
 		<div class="login-wrapper">
 			<div class="container">
 				<div class="loginbox">
-					<div class="login-left"> <img class="img-fluid" src="{{"back_auth/assets/img/logo.png"}}" alt="Logo"> </div>
+					<div class="login-left">
+                        <img class="img-fluid" src="{{"back_auth/assets/img/logo.png"}}" alt="Logo">
+                    </div>
 					<div class="login-right">
 						@yield('auth')
 					</div>

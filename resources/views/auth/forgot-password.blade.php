@@ -9,6 +9,7 @@
     @if(session('status'))
     <div class="alert alert-success mb-4">
         {{session('status')}}
+        <a href="https://mailtrap.io/inboxes/3397932/messages/4662069266"> clique ici</a>
     </div>
     @endif
     <form action="{{route('password.email')}}" method="POST">
@@ -21,6 +22,9 @@
         </div>
         <div class="form-group mb-0">
             <button class="btn btn-primary btn-block" type="submit"> {{__('Email Password Reset Link')}} </button>
+        </div>
+        <div class="form-group mb-0">
+            <a class="text-black" href="{{route('login')}}">login</a>
         </div>
     </form>
 </div>
