@@ -6,3 +6,4 @@
 <script src="{{ asset('back_auth/assets/plugins/morris/morris.min.js') }}"></script>
 <script src="{{ asset('back_auth/assets/js/chart.morris.js') }}"></script>
 <script src="{{ asset('auth_auth/assets/js/script.js') }}"></script>
+
