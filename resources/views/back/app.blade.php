@@ -12,9 +12,11 @@
     
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite('resources/css/app.css')
-    
-  </head>
 
+  </head>
+  <style>
+    [x-cloak] { display: none !important; }
+  </style>
   <body class="">
     <!-- Main wrapper #-->
     <div class="main-wrapper">
@@ -30,9 +32,9 @@
       
       <!--{# Contenu de la page #-->
       
-      <div class="page-wrapper tw-bg-[#c2fcf650]">
+      <div class="page-wrapper tw-bg-[#c2fcf650] md:tw-py-20">
         <div class="content container-fluid">
-            <div class="page-header">
+            <div class="page-header max-md:tw-py-14">
                 @yield('dashboard-header-title')
             </div>
             @yield('Dashboard-content')
