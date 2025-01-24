@@ -84,7 +84,7 @@
         <div x-cloak :class="{
             'tw-flex tw-flex-col tw-pt-1 tw-pb-24 max-sm:tw-px-4 tw-transition-all tw-duration-[1000ms] tw-ease-in-out tw-translate-y-0 tw-opacity-100': menuMobileOpen, 
             'tw-translate-y-[-20px] tw-opacity-0 tw-pointer-events-none': !menuMobileOpen
-            }"  class="tw-bg-[#080808d0] tw-w-full tw-absolute tw-top-20 tw-bottom-0 tw-left-0 tw-h-screen tw-z-10 md:tw-hidden tw-shadow-lg">
+            }"  class="-bg-[#080808d0] tw-w-full tw-absolute tw-top-20 tw-bottom-0 tw-left-0 tw-h-screen tw-z-10 md:tw-hidden tw-shadow-lg">
           
             <ul id="sidebar-menu" class="tw-rounded-b-2xl tw-rounded-t-md tw-p-2 tw-bg-[#009688]">
                 <li class="dropdown-item tw-py-3 hover:tw-bg-[#ffffff5e] hover:tw-px-2 hover:tw-rounded-md hover:tw-text-black tw-border-b-2 tw-border-[#ffffff3f] tw-text-[#ffffffdc] tw-font-bold">

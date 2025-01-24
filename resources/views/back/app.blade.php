@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
-    <title>Admin Dashboard</title>
+    <title>@yield('title')</title>
 
     <!-- Dashboard - Links -->
     @include('back.partials.styles')
@@ -32,14 +32,14 @@
       
       <!--{# Contenu de la page #-->
       
-      <div class="page-wrapper tw-bg-[#c2fcf650] md:tw-py-20">
+      <div class="page-wrapper tw-bg-[#c2fcf650] tw-mb- md:tw-py-20">
         <div class="content container-fluid">
             <div class="page-header max-md:tw-py-14">
                 @yield('dashboard-header-title')
             </div>
             @yield('Dashboard-content')
         </div>
-    </div>
+      </div>
       <!-- # Fin Contenu de la page #-->
     </div>
     <!-- # Scripts dashboard # -->
