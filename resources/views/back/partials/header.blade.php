@@ -28,7 +28,7 @@
                 <div class="user-header">
                     @auth
                     <div class="avatar avatar-sm">
-                        <img src="{{ asset('back_auth/assets/img/logo.png') }}" alt="User Image" class="avatar-img rounded-circle"/>
+                        <img src="{{ asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image) }}" alt="User Image" class="avatar-img rounded-circle"/>
                     </div>
                     
                     <div class="user-text">
@@ -39,7 +39,10 @@
                 </div>
                 <a class="dropdown-item" href="{{route('profile.edit')}}">Profile</a>
                 <a class="dropdown-item" href="settings.html">Paramettre</a>
-                <a class="dropdown-item" href="login.html">Deconnexion</a>
+                <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item">Deconnexion</button>
+                </form>
             </div>
         </li>
     </ul>
@@ -165,7 +168,7 @@
                 <div @click="open = !open" class="user-header tw-cursor-pointer">
                     @auth
                     <div  class="avatar avatar-sm tw-cursor-pointer">
-                        <img src="{{ asset('back_auth/assets/img/logo.png') }}" alt="User Image" class="avatar-img rounded-circle"/>
+                        <img src="{{ asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image) }}" alt="User Image" class="avatar-img rounded-circle"/>
                     </div>
                     <div class="user-text tw-text-[#ffffffdc] hover:!tw-text-black">
                         <h6> {{Illuminate\Support\Facades\Auth::user()->name}} </h6>
@@ -179,8 +182,11 @@
                         }" class="tw-bg-[#009688] tw-rounded-md md:tw-hidden tw-absolute tw-top-full tw-left-0 tw-shadow-lg">
 
                     <a class="dropdown-item tw-py-3 hover:tw-bg-[#ffffff5e] hover:tw-px-2 hover:tw-rounded-md hover:tw-text-black tw-border-b-2 tw-border-[#ffffff3f] tw-text-[#ffffffdc] tw-font-bold" href="{{route('profile.edit')}}">Profile</a>
-                    <a class="dropdown-item tw-py-3 hover:tw-bg-[#ffffff5e] hover:tw-px-2 hover:tw-rounded-md hover:tw-text-black tw-border-b-2 tw-border-[#ffffff3f] tw-text-[#ffffffdc] tw-font-bold" href="login.html">Deconnexion</a>
-                    <a class="dropdown-item tw-py-3 hover:tw-bg-[#ffffff5e] hover:tw-px-2 hover:tw-rounded-md hover:tw-text-black tw-border-b-2 tw-border-[#ffffff3f] tw-text-[#ffffffdc] tw-font-bold" href="settings.html"><i class="fas fa-cog"></i> <span>Paramètres</span></a>
+                    <a class="dropdown-item tw-py-3 hover:tw-bg-[#ffffff5e] hover:tw-px-2 hover:tw-rounded-md hover:tw-text-black tw-border-b-2 tw-border-[#ffffff3f] tw-text-[#ffffffdc] tw-font-bold" href="settings.html"><i class="fas fa-cog"></i><span>Paramètres</span></a>
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button type="submit" class="dropdown-item tw-py-3 hover:tw-bg-[#ffffff5e] hover:tw-px-2 hover:tw-rounded-md hover:tw-text-black tw-border-b-2 tw-border-[#ffffff3f] tw-text-[#ffffffdc] tw-font-bold">Deconnexion</button>
+                    </form>
                 </div>
             </div>
         </div>
