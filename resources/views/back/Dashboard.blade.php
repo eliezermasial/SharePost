@@ -82,6 +82,7 @@
             </div>
         </div>
     </div>
+    
     <div class="col-xl-3 col-sm-6 col-12">
         <div class="card board1 fill tw-bg-white">
             <div class="card-body">

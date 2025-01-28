@@ -46,7 +46,6 @@ class ProfileController extends Controller
 
         $ext = $request->file('image')->getClientOriginalExtension(); //recupere l'extension de l'image ex: jpn pnj..
         $file_name = date('ymdHis').'.'.$ext; // renome l'image selon la date d'enregistrement
-        
         $destinationPath = public_path('back_auth' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'profile'); //construit un chemin absolu vers un répertoire spécifique dans le dossier public
         $request->file('image')->move($destinationPath, $file_name); //deplace l'image dans le dossier absolu
 

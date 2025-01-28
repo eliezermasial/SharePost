@@ -2,7 +2,7 @@
     <div class="header-left  md:tw-flex">
         <div class="tw-flex tw-justify-normal tw-items-center tw-cursor-pointer tw-pt-3">
             <a href="index.html" class="log">
-                <img class="" src="{{ asset('back_auth/assets/img/logo.png') }}" width="50" height="70" alt="logo"/>
+                <img class="tw-rounded-full tw-object-cover tw-aspect-square" src="{{ asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image) }}" width="50" height="70" alt="logo"/>
             </a>
             @auth
                 <span class="logoclass"> {{Illuminate\Support\Facades\auth::user()->name}} </span>
@@ -20,7 +20,7 @@
             <!-- avatar for display md min -->
             <a @click="open = ! open" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <span class="user-img tw-pt-4 tw-pb-0 tw-ps-0 tw-text-end">
-                    <img class="rounded-circle" src="{{ asset('back_auth/assets/img/logo.png') }}" width="31" alt="John Doe"/>
+                    <img class="tw-rounded-full tw-object-cover tw-aspect-square" src="{{ asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image) }}" width="31" alt="John Doe"/>
                 </span>
             </a>
             

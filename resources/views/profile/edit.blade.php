@@ -61,13 +61,14 @@
                                         <i class="fa fa-edit mr-1"></i>Modifier
                                     </a>
                                 </h5>
-                                <div class="row mt-5 tw-flex md:tw-ps-44">
-                                    <p class="col-sm-3 text-sm-right mb-0 mb-sm-3 tw-ps-1"> {{'Prenom'}} </p>
-                                    <p class="col-sm-9 tw-ps-3"> {{explode(' ',$user->name)[0]}} </p>
-                                </div>
+
                                 <div class="row tw-flex md:tw-ps-44 tw-my-4">
                                     <p class="col-sm-3 text-sm-right mb-0 mb-sm-3 md:tw-ms-6"> {{'Nom'}} </p>
                                     <p class="col-sm-9 tw-ps-3"> {{explode(' ',$user->name)[1]}} </p>
+                                </div>
+                                <div class="row mt-5 tw-flex md:tw-ps-44">
+                                    <p class="col-sm-3 text-sm-right mb-0 mb-sm-3 tw-ps-1"> {{'Prenom'}} </p>
+                                    <p class="col-sm-9 tw-ps-3"> {{explode(' ',$user->name)[0]}} </p>
                                 </div>
                                 <div class="row tw-flex md:tw-ps-44">
                                     <p class="col-sm-3 text-sm-right mb-0 mb-sm-3 md:tw-ms-5"> {{'Email'}} </p>
@@ -121,9 +122,9 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
+            
             <!-- modifie pass word -->
             <div x-cloak x-show="password_tab" @click.away="password_tab = false" class="tab-pane fade tw-mt-7 tw-bg-[#fff]">
                 <div class="card">
