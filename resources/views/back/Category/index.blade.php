@@ -1,12 +1,12 @@
-@extends('back.app')
+@extends('back.layout.app')
 @section('title', 'categorie')
 
 @section('dashboard-header-title')
-<div class="row align-items-center">
+<div class="row">
     <div class="col tw-mt-10">
         <div class=" tw-flex tw-justify-between">
             <h4 class="card-title float-left mt-2">Categories</h4>
-            <a href="{{route('create.category')}}" class="btn btn-primary float-right veiwbutton tw-rounded-md tw-p-2 tw-text-[#fff]">Ajouter une categorie</a>
+            <a href="{{route('category.create')}}" class="btn btn-primary float-right veiwbutton tw-rounded-md tw-p-2 tw-text-[#fff]">Ajouter une categorie</a>
         </div>
     </div>
 </div>

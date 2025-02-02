@@ -1,47 +1,29 @@
-@extends('back.app')
 
-@section('title', 'create-category')
+@extends('back.layout.app')
 
-@section('dashboard-header-title')
-<div class="row align-items-cente">
-    <div class="col">
-      <h3 class="page-title mt-5">Ajouter une categorie</h3>
-    </div>
+@section('content')
+<div class="tw-px-6 tw-pt-8 tw-h-full">
+    <h2 class="tw-text-2xl tw-font-semibold tx-mt-6">Créer une Catégorie</h2>
+    <form action="{{ route('category.store')}}" method="POST" class="tw-bg-white tw-p-6 tw-mt-10 tw-shadow tw-rounded-lg">
+        @csrf
+        <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4">
+            <div class="tw-form-group">
+                <label class="tw-block tw-font-medium">Nom de la catégorie</label>
+                <input type="text" name="name" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-rounded-lg">
+            </div>
+            <div class="tw-form-group">
+                <label class="tw-block tw-font-medium">Description</label>
+                <textarea name="description" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-rounded-lg" rows="5"></textarea>
+            </div>
+            <div class="tw-form-group">
+                <label class="tw-block tw-font-medium">Activation</label>
+                <select name="isActive" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-rounded-lg">
+                    <option value="1">Activer</option>
+                    <option value="0">Ne pas activer</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="tw-mt-4 tw-bg-teal-600 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-w-full md:tw-w-auto">Enregistrer</button>
+    </form>
   </div>
-@endsection
-
-@section('Dashboard-content')
-<div class="row">
-    <div class="col-lg-12">
-        <form>
-            <div class="row formtype">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Nom de la categorie</label>
-                    <input class="form-control" type="text"/>
-                </div>
-            </div>
-          
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Activation</label>
-                        <select class="form-control" id="sel2" name="sellist1">
-                            <option>Activer</option>
-                            <option>Ne pas activer</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary buttonedit1">Enregistrer</button>
-        </form>
-    </div>
-</div>
-
 @endsection

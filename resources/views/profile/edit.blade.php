@@ -1,4 +1,4 @@
-@extends('back.app')
+@extends('back.layout.app')
 
 @section('title', 'Dashboard-profile')
 
@@ -46,8 +46,8 @@
                 </li>
             </ul>
         </div>
-        @if (session('status'))
-            <div class="alert alert-success"> {{session('status')}} </div>
+        @if (session('success'))
+            <div class="alert alert-success"> {{session('success')}} </div>
         @endif
         <div class="tab-content profile-tab-cont tw-my-5   ">
             <div class="tab-pane fade show active" id="per_details_tab">

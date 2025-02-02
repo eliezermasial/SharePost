@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Category;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Requests\Category\StoreCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -30,6 +30,15 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
+        $validatedData = $request->validated();
+
+        Category::create([
+            'name'=>$validatedData['name'],
+            'description'=>$validatedData['description'],
+            'isActive'=>$validatedData['isActive']
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Catégorie ajoutée avec succès !');
         //
     }
 
