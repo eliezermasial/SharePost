@@ -1,9 +1,9 @@
-<aside class="tw-w-64 tw-h-full tw-bg-white tw-pb-5 tw-text-black tw-hidden md:tw-block">
+<aside class="tw-w-64 tw-h-full tw-bg-white tw-pb-5 tw-text-black tw-hidden md:tw-block tw-border-r">
   <div class="tw-text-left  tw-bg-teal-700 tw-text-xl tw-font-bold tw-p-5">John Doe</div>
   <nav class="tw-h-full tw-py-5 tw-px-5">
       <ul>
           <li class="tw-pt-3">
-              <a href="#" class="tw-flex tw-py-3 tw-text-white tw-px-4 toggle-submenu tw-items-center tw-rounded-md tw-shadow-md tw-bg-teal-600 hover:tw-bg-teal-600">
+              <a href="{{ route('dashboard')}}" class="tw-flex tw-py-3 tw-text-white tw-px-4 tw-items-center tw-rounded-md tw-shadow-md tw-bg-teal-600 hover:tw-bg-teal-600">
                   <i class="fa fa-tachometer-alt fa-lg tw-mr-2"></i>
                   <span>Dashboard</span>
               </a>
@@ -18,13 +18,13 @@
               </a>
               <ul class="tw-pl-6 submenu" style="display: none;">
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 1</span>
                       </a>
                   </li>
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 2</span>
                       </a>
@@ -34,8 +34,8 @@
 
           <li class="tw-pt-2">
             <a href="#" 
-               class="tw-flex tw-py-3 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
-               {{ Request::is('category*') ? 'tw-bg-teal-600 tw-rounded-md tw-shadow-md tw-text-white' : '' }} 
+               class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
+               {{ Request::is('category*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
                toggle-submenu tw-items-center">
                 <i class="fa fa-list fa-lg tw-mr-2"></i>
                 <span>Catégories</span>
@@ -44,19 +44,19 @@
                 </i>
             </a>
         
-            <ul class="tw-pl-6 submenu" style="display: {{ Request::is('category*') ? 'block' : 'none' }};">
+            <ul class="tw-pl-6 tw-text-sm submenu" style="display: {{ Request::is('category*') ? 'block' : 'none' }};">
                 <li>
                     <a href="{{ route('category.index') }}" 
-                       class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md 
-                       {{ Route::currentRouteName() == 'category.index' ? 'tw-bg-teal-600 tw-text-white tw-mt-1 tw-rounded-md' : '' }}">
+                       class="tw-block tw-py-1 tw-px-3 tw-mt-2 tw- hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                       {{ Route::currentRouteName() == 'category.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
                         <i class="fa fa-circle fa-xs tw-mr-2"></i>
                         <span>Voir les catégories</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('category.create') }}" 
-                       class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md 
-                       {{ Route::currentRouteName() == 'category.create' ? 'tw-bg-teal-600 tw-text-white tw-mt-1 tw-rounded-md' : '' }}">
+                       class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                       {{ Route::currentRouteName() == 'category.create' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                         <i class="fa fa-circle fa-xs tw-mr-2"></i>
                         <span>Ajouter catégorie</span>
                     </a>
@@ -72,13 +72,13 @@
               </a>
               <ul class="tw-pl-6 submenu" style="display: none;">
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 1</span>
                       </a>
                   </li>
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 2</span>
                       </a>
@@ -93,13 +93,13 @@
               </a>
               <ul class="tw-pl-6 submenu" style="display: none;">
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 1</span>
                       </a>
                   </li>
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 2</span>
                       </a>
@@ -114,13 +114,13 @@
               </a>
               <ul class="tw-pl-6 submenu" style="display: none;">
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 1</span>
                       </a>
                   </li>
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 2</span>
                       </a>
@@ -136,13 +136,13 @@
               </a>
               <ul class="tw-pl-6 submenu" style="display: none;">
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 1</span>
                       </a>
                   </li>
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 2</span>
                       </a>
@@ -159,13 +159,13 @@
               <!-- Sous-liens -->
               <ul class="tw-pl-6 submenu" style="display: none;">
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 1</span>
                       </a>
                   </li>
                   <li>
-                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-teal-600 hover:tw-text-white hover:tw-rounded-md">
+                      <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                           <i class="fa fa-circle fa-xs tw-mr-2"></i>
                           <span>Sous-lien 2</span>
                       </a>

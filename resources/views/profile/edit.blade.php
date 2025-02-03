@@ -2,163 +2,110 @@
 
 @section('title', 'Dashboard-profile')
 
-@section('dashboard-header-title')
 
-<div class="row">
-    <div class="col">
-        <h3 class="page-title">Profile</h3>
-        <ul class="breadcrumb tw-flex">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a><span class="tw-px-1">/</span></li>
-            <li class="breadcrumb-item active {{Route::currentRouteName() == 'profile.edit' ? 'tw-bg-[#009688] tw-border tw-border-[#49a199fd] tw-rounded-sm' : ''}}">Profile</li>
-        </ul>
+@section('content')
+<div x-data="{openForm : false}" class="tw-mx-auto tw-h-full tw-bg-[#0000000a] tw-p-6">
+    <!-- Titre de la page -->
+    <div class="tw-p-6 tw-pb-4">
+        <h2 class="tw-text-2xl tw-font-semibold tw-text-gray-700">Modifier le Profil</h2>
     </div>
-</div>
-@endsection
 
-@section('Dashboard-content')
-<div x-data="{password_tab : false}" class="row !tw-pb-44 tw-relative">
-    @auth
-    <div class="col-md-12">
-        <div class="profile-header !tw-pb-0">
-            <div class="row tw-flex align-items-center">
-                <div class="col-auto profile-image tw-flex md:tw-flex-col md:tw-items-start">
-                    <div class="tw-flex tw-justify-center tw-items-center">
-                        <img 
-                            src="{{ asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image) }}" 
-                            alt="User Image" 
-                            class="tw-rounded-full tw-w-32 tw-h-32 tw-object-cover tw-aspect-square"
-                        />
-                    </div>
-                   
-                    <div class="max-sm:tw-px-4 tw-flex tw-flex-col tw-w-full tw-h-full tw-justify-center md:tw-justify-end md:tw-py-2">
-                        <h2 class="user-name max-md:tw-text-4xl tw-text-left"> {{Illuminate\Support\Facades\Auth::user()->name}} </h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="profile-menu">
-            <ul class="nav nav-tabs nav-tabs-solid tw-flex !tw-pt-2">
-                <li class="nav-item tw-me-2 max-sm:tw-py-2">
-                    <a class="nav-link active !tw-border !tw-border-[#009688] !tw-rounded-md tw-p-1 hover:tw-p-2 hover:tw-bg-[#6cd4ca] md:tw-py-2" data-toggle="tab" href="#per_details_tab">A propos</a>
-                </li>
-                <li @click="password_tab = !password_tab" class="nav-item max-sm:tw-py-2">
-                    <a class="nav-link  !tw-border !tw-border-[#009688] tw-p-1 hover:tw-p-2 !tw-rounded-md md:tw-py-2" data-toggle="tab" href="#password_tab">Mot de passe</a>
-                </li>
-            </ul>
-        </div>
-        @if (session('success'))
-            <div class="alert alert-success"> {{session('success')}} </div>
-        @endif
-        <div class="tab-content profile-tab-cont tw-my-5   ">
-            <div class="tab-pane fade show active" id="per_details_tab">
-                <div class="row">
-                    <div class="col-lg-12 tw-bg-[#fff]">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title tw-flex tw-justify-between tw-mb-4">
-                                    <span>Informations Personelles</span>
-                                    <a class="edit-link" data-toggle="modal" href="#edit_personal_details">
-                                        <i class="fa fa-edit mr-1"></i>Modifier
-                                    </a>
-                                </h5>
-
-                                <div class="row tw-flex md:tw-ps-44 tw-my-4">
-                                    <p class="col-sm-3 text-sm-right mb-0 mb-sm-3 md:tw-ms-6"> {{'Nom'}} </p>
-                                    <p class="col-sm-9 tw-ps-3"> {{explode(' ',$user->name)[1]}} </p>
-                                </div>
-                                <div class="row mt-5 tw-flex md:tw-ps-44">
-                                    <p class="col-sm-3 text-sm-right mb-0 mb-sm-3 tw-ps-1"> {{'Prenom'}} </p>
-                                    <p class="col-sm-9 tw-ps-3"> {{explode(' ',$user->name)[0]}} </p>
-                                </div>
-                                <div class="row tw-flex md:tw-ps-44">
-                                    <p class="col-sm-3 text-sm-right mb-0 mb-sm-3 md:tw-ms-5"> {{'Email'}} </p>
-                                    <p class="col-sm-9 tw-ps-3">
-                                        <a href="" class=" tw-ps- "> {{$user->email}} </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="modal fade tw-hidden tw-bg-[#fff] tw-z-10 tw-border tw-top-52  md:tw-w-1/2 md:tw-left-1/3 md:tw-right-1/3 tw-fixed" id="edit_personal_details" aria-hidden="true" role="dialog">
-                            <div class="modal-dialog modal-dialog-centered tw-p-4" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header tw-flex tw-justify-between tw-shadow-sm tw-py-3 tw-mb-6">
-                                        <h5 class="modal-title">Personal Details</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form class="modal-body" action="{{route('profile.update')}}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PATCH')
-                                        <div class="row form-row tw-flex tw-flex-col tw-gap-4">
-                                            
-                                            <div class="tw-flex tw-justify-between">
-                                                <!-- Nom -->
-                                                <div class="col-12 col-sm-6 form-group tw-flex tw-flex-col tw-pe-2">
-                                                    <label class="tw-font-medium tw-mb-3">Nom</label>
-                                                    <input type="text" class="form-control" name="name" value="{{Illuminate\Support\Facades\auth::user()->name}}" required>
-                                                </div>
-
-                                                <!-- Email (sur toute la largeur) -->
-                                                <div class="col-12 col-sm-6 form-group tw-flex tw-flex-col tw-pe-2">
-                                                    <label class="tw-font-medium tw-mb-3">Email</label>
-                                                    <input type="email" class="form-control" name="email" value="{{Illuminate\Support\Facades\auth::user()->email}}" required>
-                                                </div>
-                                            </div>
-
-                                            <!-- Pièce jointe (sur toute la largeur) -->
-                                            <div class="col-12">
-                                                <div class="form-group tw-flex tw-flex-col tw-bottom-2">
-                                                    <label class="tw-font-medium tw-mb-2">Pièce jointe</label>
-                                                    <input type="file" class="form-control" name="image">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary tw-rounded-sm tw-w-full tw-py-3">Enregistrer les modifications</button>
-                                    </form>
-                                        
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- modifie pass word -->
-            <div x-cloak x-show="password_tab" @click.away="password_tab = false" class="tab-pane fade tw-mt-7 tw-bg-[#fff]">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Modifier le mot de passe</h5>
-                        <div class="row">
-                            <div class="col-md-10 col-lg-6">
-                                <form class=" tw-pt-5" action="{{route('password.update')}}" method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="form-group tw-flex tw-flex-col tw-gap-4">
-                                        <label>Ancien mot de passe</label>
-                                        <input type="password" name="current_password" class="form-control lg:tw-w-1/2 tw-border-2 tw-border-[#009688] tw-rounded-md tw-shadow-md hover:tw-bg-[#ffffff8e] hover:tw-py-6 focus:tw-outline-none focus:tw-border-[#009688]" required>
-                                    </div>
-                                    
-                                    <div class="form-group  tw-flex tw-flex-col tw-gap-4">
-                                        <label>Nouveau mot de passe</label>
-                                        <input type="password" name="password" class="form-control lg:tw-w-1/2 tw-border-2 tw-border-[#009688] tw-rounded-md tw-shadow-md hover:tw-bg-[#ffffff8e] hover:tw-py-6 focus:tw-outline-none focus:tw-border-[#009688]" required>
-                                    </div>
-                                   
-                                    <div class="form-group  tw-flex tw-flex-col tw-gap-4">
-                                        <label>Confirmer motde passe</label>
-                                        <input type="password" name="password_confirmation" class="form-control lg:tw-w-1/2 tw-border-2 tw-border-[#009688] tw-rounded-md tw-shadow-md hover:tw-bg-[#ffffff8e] hover:tw-py-6 focus:tw-outline-none focus:tw-border-[#009688]" required>
-                                    </div>
-
-                                    <button class="btn btn-primary tw-p-2 tw-w-1/2 tw-rounded-md tw-shadow-md hover:tw-bg-[#88d8d0] hover:tw-font-bold" type="submit">Enregistrer les modifications</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Section Profil -->
+    <div class="tw-flex tw-items-center tw-my-5 md:tw-ml-6 tw-px-4 tw-py-3 tw-bg-[#fff] tw-rounded-md tw-shadow-md">
+        <img src="{{ asset('back_auth/assets/profile/' . Auth::user()->image) }}" 
+             alt="Photo de Profil" 
+             class="tw-w-20 tw-h-20 tw-rounded-full tw-border tw-border-gray-300 tw-mr-4">
+        <div>
+            <h3 class="tw-text-xl tw-font-semibold tw-text-gray-800">{{ Auth::user()->name }}</h3>
+            <p class="tw-text-gray-500">Administrateur</p>
         </div>
     </div>
-    @endauth
+
+    <!-- Informations et Bouton Modifier -->
+    <div class="tw-flex tw-bg-[#fff] tw-justify-between md:tw-ml-6 tw-px-4 tw-py-7 tw-items-start tw-flex-wrap tw-space-y-4 md:tw-space-y-0 md:tw-space-x-4 tw-rounded-md tw-shadow-md">
+        <!-- Informations Utilisateur -->
+        <div class="infos tw-w-full md:tw-w-2/3 tw-space-y-4">
+            <div class="tw-border-b tw-border-gray-100 tw-pb-4">
+                <p class="tw-text-gray-600">Nom</p>
+                <p class="tw-font-medium tw-text-gray-800">{{ Auth::user()->name }}</p>
+            </div>
+            <div class="tw-border-b tw-border-gray-100 tw-pb-4">
+                <p class="tw-text-gray-600">Email</p>
+                <p class="tw-font-medium tw-text-gray-800">{{ Auth::user()->email }}</p>
+            </div>
+            <div class="tw-border-b tw-border-gray-100 tw-pb-4">
+                <p class="tw-text-gray-600">Prénom</p>
+                <p class="tw-font-medium tw-text-gray-800">prenom</p>
+            </div>
+        </div>
+
+        <!-- Bouton Modifier -->
+        <div class="edit-profile tw-w-full md:tw-w-auto tw-flex tw-justify-end">
+            <button @click="openForm = true" 
+                    class="tw-bg-teal-500 tw-text-white tw-py-2 tw-px-4 tw-rounded-md hover:tw-bg-teal-600 tw-flex tw-items-center tw-space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="tw-w-5 tw-h-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L9.44 17.212a4.5 4.5 0 01-1.897 1.13l-3.362 1.008 1.008-3.362a4.5 4.5 0 011.13-1.897L16.863 4.487z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 6.75L17.25 4.5" />
+                </svg>
+                <span>Modifier</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Formulaire de modification en pop-up -->
+    <div x-show="openForm" x-cloak
+         class="tw-fixed tw-inset-0 tw-bg-black tw-bg-opacity-50 tw-flex tw-justify-center tw-items-center tw-z-50" 
+         @click.away="openForm = false"
+         x-transition:enter="tw-transition tw-ease-out tw-duration-300"
+         x-transition:enter-start="tw-opacity-0 tw-translate-x-full"
+         x-transition:enter-end="tw-opacity-100 tw-translate-x-0"
+         x-transition:leave="tw-transition tw-ease-in tw-duration-200"
+         x-transition:leave-start="tw-opacity-100"
+         x-transition:leave-end="tw-opacity-0 tw--translate-y-4">
+
+        <div class="tw-bg-white tw-p-6 tw-rounded-lg tw-shadow-lg tw-w-full md:tw-w-1/3">
+            <h3 class="tw-text-xl tw-font-semibold tw-text-gray-700 tw-mb-4">Modifier les Informations</h3>
+            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                <!-- Nom -->
+                <div class="tw-mb-4">
+                    <label class="tw-block tw-text-gray-700 tw-font-medium tw-mb-2">Nom</label>
+                    <input type="text" name="name" value="{{ Auth::user()->name }}" 
+                           class="tw-border tw-border-gray-300 tw-rounded-lg tw-p-2 tw-w-full tw-focus:tw-border-teal-500">
+                </div>
+
+                <!-- Email -->
+                <div class="tw-mb-4">
+                    <label class="tw-block tw-text-gray-700 tw-font-medium tw-mb-2">Email</label>
+                    <input type="email" name="email" value="{{ Auth::user()->email }}" 
+                           class="tw-border tw-border-gray-300 tw-rounded-lg tw-p-2 tw-w-full tw-focus:tw-border-teal-500">
+                </div>
+
+                <!-- Prénom -->
+                <div class="tw-mb-4">
+                    <label class="tw-block tw-text-gray-700 tw-font-medium tw-mb-2">Prénom</label>
+                    <input type="file" name="image" value="{{ Auth::user()->prenom }}" 
+                           class="tw-border tw-border-gray-300 tw-rounded-lg tw-p-2 tw-w-full tw-focus:tw-border-teal-500">
+                </div>
+
+                <!-- Boutons -->
+                <div class="tw-flex tw-justify-end tw-space-x-2">
+                    <button type="button" @click="openForm = false" 
+                            class="tw-bg-gray-300 tw-text-gray-700 tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-gray-400">
+                        Annuler
+                    </button>
+                    <button type="submit" 
+                            class="tw-bg-teal-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-lg hover:tw-bg-teal-700">
+                        Enregistrer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 @endsection
+
+

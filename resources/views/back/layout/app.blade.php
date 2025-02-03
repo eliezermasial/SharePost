@@ -20,7 +20,7 @@
   <style>
     [x-cloak] { display: none !important; }
   </style>
- <body class="tw-bg-gray-100 tw-font-sans" x-data="{ open: false }">
+ <body class="tw-font-sans" x-data="{ open: false }">
   <div class="tw-flex tw-h-screen tw-flex-col md:tw-flex-row">
       <!-- Sidebar -->
         @include('back.partials.sidebar')
