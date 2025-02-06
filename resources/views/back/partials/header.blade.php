@@ -12,7 +12,7 @@
         <!-- Image de profil (clic pour ouvrir le menu) -->
         <img 
             src="{{ asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image) }}" 
-            class="tw-w-10 tw-h-10 tw-cursor-pointer tw-rounded-full tw-border tw-border-teal-500"
+            class="tw-w-10 tw-h-10 tw-cursor-pointer tw-rounded-full tw-border"
             alt="User" 
             @click="openProfile = !openProfile"
         >

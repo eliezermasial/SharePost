@@ -1,5 +1,7 @@
 <aside class="tw-w-64 tw-h-full tw-bg-white tw-pb-5 tw-text-black tw-hidden md:tw-block tw-border-r">
-  <div class="tw-text-left  tw-bg-teal-700 tw-text-xl tw-font-bold tw-p-5">John Doe</div>
+  <div class="tw-flex tw-justify-center tw-bg-teal-700 tw-px- tw-py-2">
+    <img class="tw-w-14 tw-h-auto tw-text-center tw-cursor-pointer tw-rounded-full" src="{{"back_auth/assets/img/logo.png"}}" width="100" height="100" alt="">
+  </div>
   <nav class="tw-h-full tw-py-5 tw-px-5">
       <ul>
           <li class="tw-pt-3">
@@ -56,9 +58,9 @@
                 <li>
                     <a href="{{ route('category.create') }}" 
                        class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                       {{ Route::currentRouteName() == 'category.create' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
+                       {{ Route::currentRouteName() == 'category.create' || Route::currentRouteName()== 'category.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                         <i class="fa fa-circle fa-xs tw-mr-2"></i>
-                        <span>Ajouter catégorie</span>
+                        <span> {{Route::currentRouteName() == 'category.edit' ? 'Editer une categorie' : 'Ajouter catégorie'}} </span>
                     </a>
                 </li>
             </ul>

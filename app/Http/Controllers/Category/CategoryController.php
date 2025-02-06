@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('back.Category.index');
+        $categories = Category::all();
+
+        return view('back.Category.index', ['categories' => $categories]);
     }
 
     /**
@@ -39,7 +41,6 @@ class CategoryController extends Controller
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Catégorie ajoutée avec succès !');
-        //
     }
 
     /**
@@ -55,15 +56,23 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('back.Category.create', ['categorie' => $category]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(StoreCategoryRequest $request, Category $category)
     {
-        //
+        $validatedData = $request->validated();
+        
+        $category->update([
+            'name'=>$validatedData['name'],
+            'description'=>$validatedData['description'],
+            'isActive'=>$validatedData['isActive']
+        ]);
+        
+        return redirect()->route('dashboard')->with('success', 'Catégorie modifiée avec succès');
     }
 
     /**
@@ -71,6 +80,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('dashboard')->with('success', 'Catégorie supprimée avec succès');
     }
 }

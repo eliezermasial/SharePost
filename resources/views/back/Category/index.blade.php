@@ -26,28 +26,42 @@
                             <th class="tw-py-3 tw-px-4 tw-text-gray-600">ID categorie</th>
                             <th class="tw-py-3 tw-px-4 tw-text-gray-600">Nom</th>
                             <th class="tw-py-3 tw-px-4 tw-text-gray-600">Description</th>
+                            <th class="tw-py-3 tw-px-4 tw-text-gray-600">Statut</th>
                             <th class="tw-py-3 tw-px-4 tw-text-gray-600">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="tw-border-b">
-                            <td class="tw-py-3 tw-px-4">ART-0001</td>
-                            <td class="tw-py-3 tw-px-4">eliezer tamba</td>
-                            <td class="tw-py-3 tw-px-4">Intelligence artificielle</td>
-                            <td class="class="tw-py-3 tw-px-4"">
-                                <div x-data="{openAction: false}" class="dropdown dropdown-action tw-flex tw-justify-around">
-                                    
-                                    <div x-show="openAction" x-transition x-cloak class="dropdown-menu tw-flex tw-flex-col tw-px-2 tw-py-1 tw-bg-[#009688] tw-text-[#fff]">
-                                        <a class="dropdown-item" href=""><i class="fas fa-pencil-alt tw-m-r-5 tw-text-[#fff]"></i> Modifier</a>
-                                        <a class="dropdown-item" href="" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt tw-m-r-5 tw-text-[#fff]"></i> Supprimer</a>
+                        @foreach ($categories as $categorie)
+                            <tr class="tw-border-b">
+                                <td class="tw-py-3 tw-px-4"> {{$categorie->id}} </td>
+                                <td class="tw-py-3 tw-px-4">{{$categorie->name}} </td>
+                                <td class="tw-py-3 tw-px-4">{{$categorie->description}}</td>
+                                <td class="tw-py-3 tw-px-4">
+                                    <span class="tw-p-1 tw-rounded-md tw-font-bold tw-w-20 text-center {{ $categorie->isActive == 1 ? 'tw-bg-teal-700' : 'tw-bg-red-400'}}">
+                                        {{ $categorie->isActive == 1 ? 'active' : 'disabled' }}
+                                    </span>
+                                </td>
+                                <td class="tw-py-3 tw-px-4">
+                                    <div x-data="{openAction: false}" class="dropdown dropdown-action tw-flex tw-justify-around">
+                                        
+                                        <div x-show="openAction" x-transition x-cloak class="dropdown-menu tw-flex tw-flex-col tw-px-2 tw-py-1 tw-bg-[#009688] tw-text-[#fff]">
+                                            <a class="dropdown-item" href="{{ route('category.edit', $categorie)}}"><i class="fas fa-pencil-alt tw-m-r-5 tw-text-[#fff]"></i> Modifier</a>
+                                            <form action="{{ route('category.destroy', $categorie)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="fas fa-trash-alt tw-m-r-5 tw-text-[#fff]"></i>
+                                                    Supprimer
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <a @click="openAction = !openAction" href="javascript:void(0);" class="dropdown-toggle tw-pt-3" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v ellipse_color"></i>
+                                        </a>
                                     </div>
-                                    
-                                    <a @click="openAction = !openAction" href="javascript:void(0);" class="dropdown-toggle tw-pt-3" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v ellipse_color"></i>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
