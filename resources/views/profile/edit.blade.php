@@ -1,7 +1,6 @@
 @extends('back.layout.app')
 
-@section('title', 'Dashboard-profile')
-
+@section('title', 'my profile')
 
 @section('content')
 <div x-data="{openForm : false}" class="tw-mx-auto tw-h-full tw-bg-[#0000000a] tw-p-6">
@@ -27,7 +26,7 @@
         <div class="infos tw-w-full md:tw-w-2/3 tw-space-y-4">
             <div class="tw-border-b tw-border-gray-100 tw-pb-4">
                 <p class="tw-text-gray-600">Nom</p>
-                <p class="tw-font-medium tw-text-gray-800">{{ Auth::user()->name }}</p>
+                <p class="tw-font-medium tw-text-gray-800">{{ explode(' ', Auth::user()->name)[1] }}</p>
             </div>
             <div class="tw-border-b tw-border-gray-100 tw-pb-4">
                 <p class="tw-text-gray-600">Email</p>
@@ -35,7 +34,7 @@
             </div>
             <div class="tw-border-b tw-border-gray-100 tw-pb-4">
                 <p class="tw-text-gray-600">Prénom</p>
-                <p class="tw-font-medium tw-text-gray-800">prenom</p>
+                <p class="tw-font-medium tw-text-gray-800"> {{explode(' ', Auth::user()->name)[0]}} </p>
             </div>
         </div>
 
@@ -67,7 +66,7 @@
             <h3 class="tw-text-xl tw-font-semibold tw-text-gray-700 tw-mb-4">Modifier les Informations</h3>
             <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
+                @method('PATCH')
 
                 <!-- Nom -->
                 <div class="tw-mb-4">

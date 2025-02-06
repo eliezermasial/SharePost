@@ -19,3 +19,6 @@
         });
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+

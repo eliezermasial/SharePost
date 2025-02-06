@@ -1,8 +1,9 @@
 @extends('back.layout.app')
 
-@section('title', 'Dashboard-Accueil')
+@section('title', 'Dashboard')
 
 @section('content')
+
 
 <div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
     <!-- Titre et Message de Bienvenue -->

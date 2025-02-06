@@ -1,6 +1,8 @@
 
 @extends('back.layout.app')
 
+@section('title', 'Create categorie')
+
 @section('content')
 <div class="tw-px-6 tw-pt-8 tw-h-full">
     <h2 class="tw-text-2xl tw-font-semibold tx-mt-6">Créer une Catégorie</h2>

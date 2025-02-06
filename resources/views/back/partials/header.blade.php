@@ -3,7 +3,7 @@
         ☰ Menu
     </button>
 
-    <h1 class="tw-text-xl tw-font-semibold">Dashboard</h1>
+    <h1 class="tw-text-xl tw-font-semibold"> {{Illuminate\Support\Facades\Auth::user()->name}} </h1>
 
     <div class="tw-relative tw-flex tw-items-center tw-space-x-4" x-data="{ openProfile: false }">
         <!-- Barre de recherche -->
