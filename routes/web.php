@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Category\CategoryController;
 
 Route::get('/', function () {
@@ -19,5 +20,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('/category', CategoryController::class)->middleware('auth');//routes de resources de categorie
+Route::resource('/article', ArticleController::class)->middleware('auth'); //routes de resources d'article
 
 require __DIR__.'/auth.php';
