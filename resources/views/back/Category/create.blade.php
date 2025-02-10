@@ -1,4 +1,3 @@
-
 @extends('back.layout.app')
 
 @section('title', isset($categorie) &&  $categorie->exists() ? 'modifiier categorie' : 'creer une categorie')

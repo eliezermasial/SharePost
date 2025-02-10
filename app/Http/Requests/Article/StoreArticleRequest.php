@@ -28,7 +28,7 @@ class StoreArticleRequest extends FormRequest
             'isSharable' => ['boolean', 'required'],
             'title' => ['required', 'string', 'max:255'],
             'category_id' => ['required', 'exists:categories,id'],
-            'image' => ['nullable|image','mimes:png,jpg,jpeg','max:2048'],
+            'image' => ['nullable','image','mimes:png,jpg,jpeg','max:2048'],
         ];
     }
 }

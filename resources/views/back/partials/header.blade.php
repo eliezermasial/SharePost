@@ -7,7 +7,7 @@
 
     <div class="tw-relative tw-flex tw-items-center tw-space-x-4" x-data="{ openProfile: false }">
         <!-- Barre de recherche -->
-        <input type="text" placeholder="Search here" class="tw-border-teal-700 tw-px-4 tw-py-1 md:tw-mr-10 tw-rounded-lg focus:tw-outline-none focus:tw-border-teal-500">
+        <input type="text" placeholder="Search here" class="tw-px-4 tw-py-1 md:tw-mr-10 tw-rounded-lg tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
 
         <!-- Image de profil (clic pour ouvrir le menu) -->
         <img 

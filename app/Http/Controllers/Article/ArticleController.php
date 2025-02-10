@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Article;
 
 use App\Models\Article;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Article\StoreArticleRequest;
 use App\Http\Requests\Article\UpdateArticleRequest;
 
@@ -22,7 +24,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::where('isActive', 1)->get();
+
+        return view('back.article.create', ['categories'=>$categories]);
     }
 
     /**
@@ -30,7 +34,31 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        $user_id = auth::user()->id;
+
+
+        $image = $request->file('image');
+
+        if ($request->hasFile('image') && $image->isValid()) {
+            
+            $image = $request->file('image')->store('images', 'public');
+        }
+        
+        Article::create([
+            'image' => $image,
+            'author_id' => $user_id,
+            'title' => $validatedData['title'],
+            'content' => $validatedData['content'],
+            'isActive' => $validatedData['isActive'],
+            'isComment' => $validatedData['isComment'],
+            'isSharable' => $validatedData['isSharable'],
+            'category_id' => $validatedData['category_id'],
+        ]);
+
+        return redirect()->route('article.index')->with('success', 'Article ajouté avec succès');
+
     }
 
     /**

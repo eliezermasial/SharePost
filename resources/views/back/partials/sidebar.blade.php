@@ -18,16 +18,14 @@
 
           <li class="tw-pt-5">
             <a href="#" class="tw-flex tw-py-3 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
-                {{ Request::is('article*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
-                toggle-submenu tw-items-center">
+                {{ Request::is('article*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} toggle-submenu tw-items-center">
                 
                 <i class="fa fa-newspaper fa-lg tw-mr-2"></i>
                 <span>Articles</span>
-                <i class="fa fa-xs submenu-toggle tw-ml-auto 
-                    {{ Request::is('article*') ? 'fa-chevron-down' : 'fa-chevron-right' }}">
+                <i class="fa fa-xs submenu-toggle tw-ml-auto {{ Request::is('article*') ? 'fa-chevron-down' : 'fa-chevron-right' }}">
                 </i>
             </a>
-            <ul class="tw-pl-6 submenu {{ Request::is('article*') ? 'tw-block' : 'tw-none' }}">
+            <ul class="tw-pl-6 submenu {{ Request::is('article*') ? 'tw-block' : 'tw-hidden' }}">
                 <li>
                     <a href="{{ route('article.index') }}" 
                         class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
@@ -47,18 +45,17 @@
             </ul>
         </li>
 
-          <li class="tw-pt-2">
+        <li class="tw-pt-2">
             <a href="#" 
                class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
                {{ Request::is('category*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
                toggle-submenu tw-items-center">
+
                 <i class="fa fa-list fa-lg tw-mr-2"></i>
                 <span>Catégories</span>
-                <i class="fa fa-xs submenu-toggle tw-ml-auto 
-                          {{ Request::is('category*') ? 'fa-chevron-down' : 'fa-chevron-right' }}">
-                </i>
+                <i class="fa fa-xs submenu-toggle tw-ml-auto {{ Request::is('category*') ? 'fa-chevron-down' : 'fa-chevron-right' }}"></i>
             </a>
-            <ul class="tw-pl-6 tw-text-sm submenu" style="display: {{ Request::is('category*') ? 'tw-block' : 'tw-none' }};">
+            <ul class="tw-pl-6 tw-text-sm submenu {{ Request::is('category*') ? 'tw-block' : 'tw-hidden' }}">
                 <li>
                     <a href="{{ route('category.index') }}" 
                        class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
@@ -84,7 +81,7 @@
                 <span>Auteurs</span>
                 <i class="fa fa-chevron-right fa-xs submenu-toggle tw-ml-auto"></i>
             </a>
-            <ul class="tw-pl-6 submenu">
+            <ul class="tw-pl-6 submenu tw-hidden" >
                 <li>
                     <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
                         <i class="fa fa-circle fa-xs tw-mr-2"></i>
