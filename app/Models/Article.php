@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Conner\Tagging\Taggable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class Article extends Model
     use HasFactory;
     use HasSlug;
     use SoftDeletes;
+    use taggable;
 
     protected $fillable = [
         'slug',
@@ -27,11 +29,16 @@ class Article extends Model
         'isSharable',
         'category_id',
     ];
-    /*
+    
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
-    }*/
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function getSlugOptions(): SlugOptions
     {
@@ -47,4 +54,5 @@ class Article extends Model
     {
         return storage::url($this->image);
     }
+
 }

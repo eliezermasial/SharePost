@@ -42,6 +42,16 @@
                         <span>{{ Route::currentRouteName() == 'article.edit' ? 'Éditer un article' : 'Ajouter un article' }}</span>
                     </a>
                 </li>
+                @if (isset($article))
+                    <li class="{{Route::currentRouteName() == 'article.show' ? 'tw-block' : 'tw-hidden'}}">
+                        <a href="#" 
+                            class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                            {{ Route::currentRouteName() == 'article.show' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
+                            <i class="fa fa-circle fa-xs tw-mr-2"></i>
+                            <span>{{$article->title}} </span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </li>
 

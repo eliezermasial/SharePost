@@ -40,7 +40,9 @@ class CategoryController extends Controller
             'isActive'=>$validatedData['isActive']
         ]);
 
-        return redirect()->route('dashboard')->with('success', 'Catégorie ajoutée avec succès !');
+        return redirect()->route('dashboard')
+                ->with('success', 'Catégorie ajoutée avec succès !')
+                ->with('error', 'Une erreur est survenue !');
     }
 
     /**
@@ -72,7 +74,9 @@ class CategoryController extends Controller
             'isActive'=>$validatedData['isActive']
         ]);
         
-        return redirect()->route('dashboard')->with('success', 'Catégorie modifiée avec succès');
+        return redirect()->route('dashboard')
+                ->with('success', 'Catégorie modifiée avec succès')
+                ->with('error', 'Une erreur est survenue !');
     }
 
     /**
@@ -81,6 +85,9 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('dashboard')->with('success', 'Catégorie supprimée avec succès');
+
+        return redirect()->route('dashboard')
+                ->with('success', 'Catégorie supprimée avec succès')
+                ->with('error', 'Une erreur est survenue !');
     }
 }

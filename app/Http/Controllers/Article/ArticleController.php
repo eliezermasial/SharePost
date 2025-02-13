@@ -6,6 +6,8 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Article\StoreArticleRequest;
 use App\Http\Requests\Article\UpdateArticleRequest;
 
@@ -16,7 +18,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('back.article.index');
+        $articles = Article::All();
+
+        return view('back.article.index', ['articles' => $articles]);
     }
 
     /**
@@ -24,9 +28,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $categories = Category::where('isActive', 1)->get();
+        $categories = Category::active()->get();
 
-        return view('back.article.create', ['categories'=>$categories]);
+        return view('back.article.create', ['categories' => $categories]);
     }
 
     /**
@@ -38,15 +42,16 @@ class ArticleController extends Controller
 
         $user_id = auth::user()->id;
 
+        $image = null;
 
-        $image = $request->file('image');
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
 
-        if ($request->hasFile('image') && $image->isValid()) {
-            
             $image = $request->file('image')->store('images', 'public');
         }
-        
-        Article::create([
+
+        $tags = isset($validatedDataa['tags']) ? explode(',', $validatedData['tags']) : [];
+
+        $article = Article::create([
             'image' => $image,
             'author_id' => $user_id,
             'title' => $validatedData['title'],
@@ -57,8 +62,10 @@ class ArticleController extends Controller
             'category_id' => $validatedData['category_id'],
         ]);
 
-        return redirect()->route('article.index')->with('success', 'Article ajouté avec succès');
-
+        $article->tag($tags);
+        
+        return redirect()->route('article.index')
+                ->with('success', 'Article ajouté avec succès');
     }
 
     /**
@@ -66,7 +73,8 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        View::share('article', $article);
+        return view('back.article.show', ['article' => $article]);
     }
 
     /**
@@ -74,7 +82,9 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        $categories = Category::active()->get();
+
+        return view('back.article.create', ['article' => $article,'categories' => $categories]);
     }
 
     /**
@@ -82,7 +92,35 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        //
+        $validatedData = $request->validated();
+
+        $image = null;
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            // Vérifie si l'article a déjà une image avant de la supprimer
+            if (!empty($article->image)) {
+                Storage::disk('public')->delete($article->image);
+            }
+            $image = $request->file('image')->store('images', 'public');
+        }
+
+        $article = Article::find($article->id);
+
+        $tags = isset($validatedData['tags']) ? explode(' ', $validatedData['tags']) : [];
+
+        $article->update([
+            'image' => $image,
+            'title' => $validatedData['title'],
+            'content' => $validatedData['content'],
+            'isActive' => $validatedData['isActive'],
+            'isComment' => $validatedData['isComment'],
+            'isSharable' => $validatedData['isSharable'],
+            'category_id' => $validatedData['category_id'],
+        ]);
+
+        $article->retag($tags);
+
+        return redirect()->route('article.index')->with('success', 'Article ajour avec succès');
     }
 
     /**
@@ -90,6 +128,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return redirect()->route('article.index')->with('success', 'Article supprimé avec succès');
     }
 }

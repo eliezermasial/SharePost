@@ -9,6 +9,7 @@
         "php": "^8.2",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
+        "rtconner/laravel-tagging": "^5.0",
         "spatie/laravel-sluggable": "^3.7"
     },
     "require-dev": {
