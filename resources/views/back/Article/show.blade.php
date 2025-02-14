@@ -11,8 +11,8 @@
     </div>
 
     <div class=" tw-flex tw-flex-col tw-gap-6 tw-justify-center tw-w-full tw-bg-[#fff] tw-shadow-lg tw-rounded-lg tw-p-6">
-        <div class="tw-rounded-lg">
-            <img src="{{$article->imageUrl()}}" alt="iPhone 15" class="tw-w-full tw-rounded-lg tw-boder-2 tw-border-[#e2e1e193] tw-shadow-md">
+        <div class="tw-rounded-lg tw-h-1/2">
+            <img src="{{$article->imageUrl()}}" alt="iPhone 15" class=" tw-rounded-lg tw-boder-2 tw-border-[#e2e1e193] tw-shadow-md">
         </div>
         <div class="tw-mt-4">
             <p class="tw-text-gray-700 ">
@@ -28,6 +28,19 @@
             </p>
         </div>
     </div>
+    @if ($article->tags->isNotEmpty())
+    <div class="tw-mb-4 tw-bg-[#ffffffdc] tw-px-6 tw-py-2">
+        <h3 class="tw-text-lg tw-mb-2 tw-font-bold tw-text-[#1f1e1eb4]">Tags :</h3>
+        <div class="tw-flex tw-text-[#ffffffdc] tw-gap-4 tw-justify-between tw-w-full  tw-shadow-lg tw-rounded-lg tw-px-2 tw-py-4">
+            @foreach ($article->tags as $tag)
+                <span class="tw-bg-teal-600 tw-p-2 tw-rounded-lg tw-shadow-md tw-text-sm tw-font-semibold">
+                    {{$tag->name}}
+                </span>
+            @endforeach
+        </div>
+    </div>
+    @endif
+
 
     <div class=" tw-flex tw-flex-col tw-gap-8 tw-justify-center tw-w-full tw-bg-[#fff] tw-shadow-lg tw-rounded-lg tw-p-6">
         <h1 class=" tw-text-[#1f1e1eb4] min-md:tw-text-center tw-text-xl lg:tw-text-2xl tw-font-bold tw-capitalize ">
@@ -51,8 +64,6 @@
                 </p>
             </div>
         </div>
-        
-
     </div>
 </div>
 @endsection

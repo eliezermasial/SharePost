@@ -36,7 +36,7 @@
                 <tbody>
                     @foreach ($articles as $article)
                         <tr class="tw-border-b">
-                            <td class="tw-py-3 tw-px-4">ART-000 {{$article->id}} </td>
+                            <td class="tw-py-3 tw-px-4">ART-0 {{$article->id}} </td>
                             <td class="tw-py-3 tw-px-4"> {{$article->title}} </td>
                             <td class="tw-py-3 tw-px-4">
                                 <img 

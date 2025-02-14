@@ -49,7 +49,7 @@ class ArticleController extends Controller
             $image = $request->file('image')->store('images', 'public');
         }
 
-        $tags = isset($validatedDataa['tags']) ? explode(',', $validatedData['tags']) : [];
+        $tags = isset($validatedData['tags']) ? explode(',', $validatedData['tags']) : [];
 
         $article = Article::create([
             'image' => $image,
@@ -94,20 +94,18 @@ class ArticleController extends Controller
     {
         $validatedData = $request->validated();
 
-        $image = null;
+        $image = $article->image;
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
-            // Vérifie si l'article a déjà une image avant de la supprimer
+            // Supprimer l'ancienne image si une nouvelle est ajoutée
             if (!empty($article->image)) {
                 Storage::disk('public')->delete($article->image);
             }
             $image = $request->file('image')->store('images', 'public');
         }
 
-        $article = Article::find($article->id);
-
-        $tags = isset($validatedData['tags']) ? explode(' ', $validatedData['tags']) : [];
-
+        $tags = isset($validatedData['tags']) ? explode(',', $validatedData['tags']) : [];
+    
         $article->update([
             'image' => $image,
             'title' => $validatedData['title'],

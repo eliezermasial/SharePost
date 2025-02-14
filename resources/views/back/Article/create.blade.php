@@ -51,7 +51,7 @@
                     <!-- Liste des Tags existants -->
                     <div class="tw-flex tw-flex-wrap tw-gap-2">
                         <template x-for="(tag, index) in tags" :key="index">
-                            <span class="tw-flex tw-items-center tw-bg-teal-600 tw-text-white tw-text-sm tw-px-3 tw-py-1 tw-rounded-full tw-font-semibold">
+                            <span class="tw-flex tw-items-center tw-bg-teal-600 tw-text-white tw-text-sm tw-px-3 tw-py-1 tw-rounded-md tw-font-semibold">
                                 <span x-text="tag"></span>
                                 <button type="button" class="tw-ml-2 tw-text-white tw-font-bold" @click="removeTag(index)">×</button>
                             </span>
