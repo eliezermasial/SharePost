@@ -11,8 +11,9 @@
 	<link rel="stylesheet" href="{{"back_auth/assets/plugins/fontawesome/css/fontawesome.min.css"}}">
 	<link rel="stylesheet" href="{{"back_auth/assets/css/feathericon.min.css"}}">
 	<link rel="stylesheet" href="{{"back_auth/assets/plugins/morris/morris.css"}}">
-	<link rel="stylesheet" href="{{"back_auth/assets/css/style.css"}}"> </head>
+	<link rel="stylesheet" href="{{"back_auth/assets/css/style.css"}}">
 	@vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
 
 <body>
 	<div class="main-wrapper login-body">
@@ -35,5 +36,4 @@
 	<script src="{{"back_auth/assets/plugins/slimscroll/jquery.slimscroll.min.js"}}"></script>
 	<script src="{{"back_auth/assets/js/script.js"}}"></script>
 </body>
-
 </html>

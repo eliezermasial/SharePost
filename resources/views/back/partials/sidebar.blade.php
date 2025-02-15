@@ -1,4 +1,4 @@
-<aside class="tw-w-64 tw-h-full tw-bg-white tw-pb-5 tw-text-black tw-hidden md:tw-block tw-border-r">
+<aside class="tw-w-64 tw-overflow-auto tw-fixed tw-h-full tw-bg-white tw-pb-5 tw-text-black tw-hidden md:tw-block tw-border-r">
 
     <div class="tw-flex tw-justify-center tw-bg-teal-700 tw-px- tw-py-2">
         <img
@@ -39,7 +39,7 @@
                         class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
                         {{ Route::currentRouteName() == 'article.create' || Route::currentRouteName() == 'article.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
                         <i class="fa fa-circle fa-xs tw-mr-2"></i>
-                        <span>{{ Route::currentRouteName() == 'article.edit' ? 'Éditer un article' : 'Ajouter un article' }}</span>
+                        <span>{{ Route::currentRouteName() == 'article.edit' ? 'Éditer un article' : 'Ajouter article' }}</span>
                     </a>
                 </li>
                 @if (isset($article))

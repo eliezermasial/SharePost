@@ -9,30 +9,29 @@
     <!-- Dashboard - Links -->
     @include('back.partials.styles')
     <!--# Fin Dashbord Link #}-->
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
   </head>
+
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
   <style>
     [x-cloak] { display: none !important; }
   </style>
 
- <body class="tw-font-sans" x-data="{ open: false }">
+ <body class="tw-font-sans " x-data="{ open: false }">
 
-  <div class="tw-flex tw-h-screen tw-flex-col md:tw-flex-row">
-      <!-- Sidebar -->
-        @include('back.partials.sidebar')
-    
-      <div class="tw-flex-1 tw-flex tw-flex-col">
-          <!-- Header -->
-          @include('back.partials.header')
-          
-          <!-- Main Content -->
-          <main class="tw-h-full">
-            @yield('content')
-          </main>
-      </div>
-  </div>
+  <!-- Header -->
+  @include('back.partials.header')
+
+  <!-- Sidebar -->
+  @include('back.partials.sidebar')
+
+  <!-- Main Content -->
+  <main class="tw-h-full">
+
+    @yield('content')
+
+  </main>
+
   <!-- scripty js -->
   @include('back.partials.scripts')
   

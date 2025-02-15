@@ -1,9 +1,13 @@
 @extends('auth.auth-layout')
 @section('title', 'login')
 @section('auth')
-
 <div class="login-right-wrap">
-    <h1 class="mb-3">@yield('title') </h1>
+    
+    
+    <div class=" md:tw-hidden tw-flex tw-flex-col tw-items-center tw-py-3 tw-rounded-md tw-shadow-sm tw-border  tw-mb-3 tw-justify-center">
+        <img class="" src="{{"back_auth/assets/img/logo.png"}}" width="100" height="100"  alt="Logo">
+        <h1 class="tw-text-teal-600 e tw-text-sm tw-mt-2">@yield('title') </h1>
+    </div>
     <form action="{{route('login')}}" method="POST">
         @csrf
         <div class="form-group">

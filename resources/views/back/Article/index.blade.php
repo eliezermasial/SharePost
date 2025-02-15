@@ -3,7 +3,7 @@
 @section('title', 'Articles')
 
 @section('content')
-<div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+<div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen tw-me-0  tw-ms-20 tw-right-0">
 
     <!-- Titre et Message de Bienvenue -->
     <div class=" tw-flex tw-justify-between tw-mt-4 tw-py-5 tw-mb-8">

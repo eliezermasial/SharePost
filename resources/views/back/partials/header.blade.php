@@ -1,4 +1,4 @@
-<header class="tw-bg-white tw-px-4 tw-py-4 tw-shadow tw-flex tw-justify-between tw-items-center">
+<header class="tw-bg-white max-md:tw-w-full tw-fixed md:tw-right-0 md:tw-left-64 tw-w- tw-px-4 tw-py-4 tw-shadow tw-flex tw-justify-between tw-items-center">
     <button @click="openMenu = !openMenu" class="md:tw-hidden tw-bg-teal-600 tw-text-white tw-px-3 tw-py-2 tw-rounded">
         ☰ Menu
     </button>
