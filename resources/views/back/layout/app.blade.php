@@ -17,42 +17,40 @@
     [x-cloak] { display: none !important; }
   </style>
 
- <body class="tw-font-sans " x-data="{ open: false }">
+ <body class="tw-font-sans " x-data="{ open: false, openMenu: false }">
 
-  <!-- Header -->
-  @include('back.partials.header')
+    <!-- Header -->
+    @include('back.partials.header')
 
-  <!-- Sidebar -->
-  @include('back.partials.sidebar')
+    <!-- Sidebar -->
+    @include('back.partials.sidebar')
 
-  <!-- Main Content -->
-  <main class="tw-h-full">
+    <!-- Main Content -->
+    <main class="tw-h-full">
+      @yield('content')
+    </main>
 
-    @yield('content')
-
-  </main>
-
-  <!-- scripty js -->
-  @include('back.partials.scripts')
-  
-  @if (session('success'))
-    <script>
+    <!-- scripty js -->
+    @include('back.partials.scripts')
+    
+    @if (session('success'))
+      <script>
         iziToast.success({
-            title: 'succès',
-            message: '{{ session('success') }}',
-            position: 'topRight'
+          title: 'succès',
+          message: '{{ session('success') }}',
+          position: 'topRight'
         });
-    </script>
-  @endif
+      </script>
+    @endif
 
-  @if (session('error'))
+    @if (session('error'))
       <script>
           iziToast.error({
-              title: 'Erreur',
-              message: '{{ session('error') }}',
-              position: 'topRight'
-          });
+            title: 'Erreur',
+            message: '{{ session('error') }}',
+            position: 'topRight'
+            });
       </script>
-  @endif
-</body>
+    @endif
+  </body>
 </html>

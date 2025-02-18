@@ -5,11 +5,13 @@
 @section('content')
 
     <div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
-
+        <div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
         <!-- Titre et Message de Bienvenue -->
-        <div class=" tw-flex tw-justify-between tw-mt-4 tw-py-5 tw-mb-8">
+        <div class=" tw-flex max-md:tw-flex-col max-md:tw-gap-6 tw-justify-between tw-py-5 tw-mb-7">
             <h1 class="tw-text-2xl tw-font-bold tw-text-gray-800">Categories</h1>
-            <a href="{{route('category.create')}}" class="tw-bg-teal-700 veiwbutton tw-rounded-md tw-p-2 tw-text-[#fff]">Ajouter une categorie</a>
+            <div>
+                <a href="{{route('category.create')}}" class="tw-bg-teal-700 veiwbutton tw-rounded-md tw-p-2 tw-text-[#fff]">Ajouter une categorie</a>
+            </div>
         </div>
 
         <!-- Articles Récents -->
@@ -65,6 +67,7 @@
                     </tbody>
                 </table>
             </div>
+        </div>
         </div>
     </div>
 

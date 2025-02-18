@@ -79,7 +79,7 @@
                        class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
                        {{ Route::currentRouteName() == 'category.create' || Route::currentRouteName()== 'category.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                         <i class="fa fa-circle fa-xs tw-mr-2"></i>
-                        <span> {{Route::currentRouteName() == 'category.edit' ? 'Editer une categorie' : 'Ajouter catégorie'}} </span>
+                        <span> {{Route::currentRouteName() == 'category.edit' ? 'Editer categorie' : 'Ajouter catégorie'}} </span>
                     </a>
                 </li>
             </ul>
@@ -191,38 +191,88 @@
             </ul>
         </li>
     </ul>
-</nav>
+    </nav>
 </aside>
 
-<!-- menu mobile -->
 
-<div class="md:tw-hidden" x-show="open" x-transition class="tw-fixed tw-inset-0 tw-bg-gray-800 tw-bg-opacity-75 tw-flex">
-  <aside class="tw-w-64 tw-bg-teal-700 tw-text-white tw-p-5 tw-h-full">
-      <button @click="open = false" class="tw-text-white tw-text-lg">✖</button>
-      <nav class="tw-mt-5">
-          <ul>
-              <li>
-                  <a href="#" class="tw-block tw-py-2 tw-px-4 tw-bg-teal-600 tw-rounded">Dashboard</a>
-              </li>
-              <li>
-                  <a href="#" class="tw-block tw-py-2 tw-px-4 hover:tw-bg-teal-600">Articles</a>
-              </li>
-              <li>
-                  <a href="#" class="tw-block tw-py-2 tw-px-4 hover:tw-bg-teal-600">Catégories</a>
-              </li>
-              <li>
-                  <a href="#" class="tw-block tw-py-2 tw-px-4 hover:tw-bg-teal-600">Auteurs</a>
-              </li>
-              <li>
-                  <a href="#" class="tw-block tw-py-2 tw-px-4 hover:tw-bg-teal-600">Commentaires</a>
-              </li>
-              <li>
-                  <a href="#" class="tw-block tw-py-2 tw-px-4 hover:tw-bg-teal-600">Contacts</a>
-              </li>
-              <li>
-                  <a href="#" class="tw-block tw-py-2 tw-px-4 hover:tw-bg-teal-600">Paramètres</a>
-              </li>
-          </ul>
-      </nav>
-  </aside>
+<!-- Menu latéral -->
+<div>
+    <!-- Overlay et Sidebar -->
+    <div class="tw-fixed tw-inset-0"
+        x-show="openMenu"
+        @click.away="openMenu = false"
+        x-cloak
+        x-transition.opacity.duration.500ms
+        class="tw-bg-gray-800 tw-bg-opacity-75 tw-flex tw-z-50">
+        
+        <!-- Sidebar -->
+        <aside class="tw-w-64 tw-bg-teal-700 tw-text-white tw-p-5 tw-mt-2 tw-h-full tw-fixed tw-left-0 tw-top-16 tw-shadow-lg"
+            x-show="openMenu"
+            x-transition:enter="tw-transition tw-duration-700"
+            x-transition:enter-start="-tw-translate-x-full"
+            x-transition:enter-end="tw-translate-x-0"
+            x-transition:leave="tw-transition tw-duration-700"
+            x-transition:leave-start="tw-translate-x-0"
+            x-transition:leave-end="-tw-translate-x-full">
+
+            <div class="tw-flex tw-bg-teal-600 tw-p-2 tw-border tw-border-teal-600 tw-rounded-sm tw-justify-between">
+                @if (\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->image)
+                    <a href="{{ route('profile.edit')}}">
+                        <img
+                        class="tw-w-14 tw-h-14 tw-cursor-pointer tw-rounded-full"
+                        src="{{ asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image)}}" width="100" height="100" alt=""
+                        >
+                    </a>
+                @else
+                    <a href="{{ route('profile.edit')}}">
+                        <img
+                        class="tw-w-14 tw-h-14 tw-text-center tw-cursor-pointer tw-rounded-full"
+                        src="{{ asset('back_auth/assets/img/logo.png')}}" width="100" height="100" alt=""
+                        >
+                    </a>
+                @endif
+
+                <button @click="openMenu = false" class="tw-text-white tw-text-lg tw-top- tw-right-3">✖</button>
+            </div>
+            
+            <nav class="tw-mt-10">
+                <ul>
+                    <li>
+                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 tw-bg-teal-600 tw-rounded">
+                            <i class="fas fa-tachometer-alt"></i> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="tw-flex tw-items-center tw-gap-3 tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                            <i class="fas fa-newspaper"></i> Articles
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                        <i class="fas fa-tags"></i> Catégories</a>
+                    </li>
+                    <li>
+                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                            <i class="fas fa-user"></i> Auteurs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                            <i class="fas fa-comments"></i> Commentaires
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                            <i class="fas fa-envelope"></i> Contacts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                            <i class="fas fa-cog"></i> Paramètres
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
 </div>

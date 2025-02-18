@@ -4,8 +4,8 @@
 
 @section('content')
 
-
-<div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+<div class=" tw-flex tw-flex-col tw-justify-items-start tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+<div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
     <!-- Titre et Message de Bienvenue -->
     <div class="tw-mt-4 tw-mb-8">
         <h1 class="tw-text-2xl tw-font-bold tw-text-gray-800">Hello, Bonjour eliezer tamba !</h1>
@@ -13,42 +13,26 @@
     </div>
 
     <!-- Statistiques -->
-    <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6 tw-mb-8">
-        <!-- Total Articles -->
-        <div class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6 tw-flex tw-items-center tw-justify-between">
-            <div>
-                <p class="tw-text-3xl tw-font-semibold tw-text-teal-600">236</p>
-                <p class="tw-text-sm tw-text-gray-600">Total Articles</p>
+    <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6 tw-mb-8" x-data="{ stats: [
+        { count: 236, text: 'Total Articles', icon: 'fa-user-plus' },
+        { count: 10, text: 'Total Catégories', icon: 'fa-dollar-sign' },
+        { count: 1538, text: 'Total Commentaires', icon: 'fa-file-alt' },
+        { count: 364, text: 'Abonnements', icon: 'fa-globe' }
+        ]}">
+        <template x-for="(item, index) in stats" :key="index">
+            <div x-data="{ hover: false }"
+                @mouseover="hover = true"
+                @mouseleave="hover = false"
+                class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6 tw-flex tw-items-center tw-justify-between tw-transition-all tw-duration-300"
+                :class="hover ? 'tw-shadow-lg tw-scale-105 tw-bg-teal-50' : ''">
+                
+                <div>
+                    <p class="tw-text-3xl tw-font-semibold tw-text-teal-600" x-text="item.count"></p>
+                    <p class="tw-text-sm tw-text-gray-600" x-text="item.text"></p>
+                </div>
+                <i :class="'fa ' + item.icon + ' fa-2x tw-text-teal-600'"></i>
             </div>
-            <i class="fa fa-user-plus fa-2x tw-text-teal-600"></i>
-        </div>
-
-        <!-- Total Catégories -->
-        <div class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6 tw-flex tw-items-center tw-justify-between">
-            <div>
-                <p class="tw-text-3xl tw-font-semibold tw-text-teal-600">10</p>
-                <p class="tw-text-sm tw-text-gray-600">Total Catégories</p>
-            </div>
-            <i class="fa fa-dollar-sign fa-2x tw-text-teal-600"></i>
-        </div>
-
-        <!-- Total Commentaires -->
-        <div class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6 tw-flex tw-items-center tw-justify-between">
-            <div>
-                <p class="tw-text-3xl tw-font-semibold tw-text-teal-600">1538</p>
-                <p class="tw-text-sm tw-text-gray-600">Total Commentaires</p>
-            </div>
-            <i class="fa fa-file-alt fa-2x tw-text-teal-600"></i>
-        </div>
-
-        <!-- Abonnements -->
-        <div class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6 tw-flex tw-items-center tw-justify-between">
-            <div>
-                <p class="tw-text-3xl tw-font-semibold tw-text-teal-600">364</p>
-                <p class="tw-text-sm tw-text-gray-600">Abonnements</p>
-            </div>
-            <i class="fa fa-globe fa-2x tw-text-teal-600"></i>
-        </div>
+        </template>
     </div>
 
     <!-- Articles Récents -->
@@ -86,6 +70,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 
 @endsection
