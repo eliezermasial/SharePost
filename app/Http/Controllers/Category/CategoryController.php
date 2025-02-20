@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Category;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -35,6 +35,7 @@ class CategoryController extends Controller
         $validatedData = $request->validated();
 
         Category::create([
+            
             'name'=>$validatedData['name'],
             'description'=>$validatedData['description'],
             'isActive'=>$validatedData['isActive']
@@ -64,7 +65,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreCategoryRequest $request, Category $category)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
         $validatedData = $request->validated();
         
