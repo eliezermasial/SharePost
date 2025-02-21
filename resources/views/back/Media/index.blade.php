@@ -1,6 +1,6 @@
 @extends('back.layout.app')
 
-@section('title', 'author')
+@section('title', 'medias sociaux')
 
 @section('content')
     <div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
@@ -8,9 +8,9 @@
 
             <!-- Titre et Message de Bienvenue -->
             <div class=" tw-flex max-md:tw-flex-col max-md:tw-gap-6 tw-justify-between tw-py-5 tw-mb-7">
-                <h1 class="tw-text-2xl tw-font-bold tw-text-gray-800">Les Autheurs</h1>
+                <h1 class="tw-text-2xl tw-font-bold tw-text-gray-800">Les Reseaux sociaux</h1>
                 <div>
-                    <a href="{{ route('author.create')}}" class="tw-bg-teal-700 veiwbutton tw-rounded-md tw-p-2 tw-text-[#fff]">Ajouter un Autheur</a>
+                    <a href="{{route('mediaSocial.create')}}" class="tw-bg-teal-700 veiwbutton tw-rounded-md tw-p-2 tw-text-[#fff]">Ajouter un Reseau</a>
                 </div>
             </div>
 
@@ -28,24 +28,25 @@
                                 <th class="tw-py-3 tw-px-4 tw-text-gray-600">ID</th>
                                 <th class="tw-py-3 tw-px-4 tw-text-gray-600">Name</th>
                                 <th class="tw-py-3 tw-px-4 tw-text-gray-600">email</th>
+                                <th class="tw-py-3 tw-px-4 tw-text-gray-600">icon</th>
                                 <th class="tw-py-3 tw-px-4 tw-text-gray-600">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($authors as $author)
-                            
+                            @foreach ($socials as $social)
+                                
                             <tr class="tw-border-b">
-                                <td class="tw-py-3 tw-px-4">ART-0{{$author->id}}</td>
-                                <td class="tw-py-3 tw-px-4"> {{$author->name}}</td>
-                                <td class="tw-py-3 tw-px-4">{{$author->email}}</td>
+                                <td class="tw-py-3 tw-px-4">ART-0{{$social->id}} </td>
+                                <td class="tw-py-3 tw-px-4">{{$social->name}} </td>
+                                <td class="tw-py-3 tw-px-4">{{$social->lien}} </td>
+                                <td class="tw-py-3 tw-px-4">{{$social->icon}} </td>
                                 <td class="tw-py-3 tw-px-4">
                                     <div x-data="{openAction: false}" class="dropdown dropdown-action tw-flex tw-justify-around">
-                                        
                                         <div x-show="openAction" x-transition x-cloak class="tw-flex tw-flex-col tw-gap-1 tw-px-2 tw-py-2 tw-bg-[#eff5f569] tw-text-[#fff] tw-rounded-sm">
-                                            <a class="tw-bg-teal-700 hover:tw-bg-[#00968798] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border" href="{{ route('author.edit', $author)}}">
+                                            <a class="tw-bg-teal-700 hover:tw-bg-[#00968798] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border" href="{{ route('mediaSocial.edit', $social)}}">
                                                 <i class="fas fa-pencil-alt tw-m-r-5 tw-text-[#fff]"></i> Modifier
                                             </a>
-                                            <form action="{{ route('author.destroy', $author) }}" method="POST">
+                                            <form action="{{ route('mediaSocial.destroy', $social)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="tw-flex tw-items-center tw-bg-red-600 hover:tw-bg-[#d47070] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border">
@@ -59,7 +60,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

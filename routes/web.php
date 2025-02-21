@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\MediaSocial\MediaSocialController;
 
 //routes de la page d'accueil
 Route::get('/', function () {
@@ -29,7 +30,10 @@ Route::resource('/category', CategoryController::class)->middleware('auth');
 //routes de resources d'article
 Route::resource('/article', ArticleController::class)->middleware('auth');
 
-//routes de resources d'utilisateur
+//routes de resources des Autheurs
 Route::resource('/author', UserController::class)->middleware('auth');
+
+//routes de resources des medias sociaux
+Route::resource('/mediaSocial', MediaSocialController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
