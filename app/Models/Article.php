@@ -5,6 +5,7 @@ namespace App\Models;
 use Conner\Tagging\Taggable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,7 +30,7 @@ class Article extends Model
         'isSharable',
         'category_id',
     ];
-    
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -45,14 +46,18 @@ class Article extends Model
         return SlugOptions::create()->generateSlugsFrom(fieldName:'title')->saveSlugsTo(fieldName:'slug');
     }
 
-    public function getRouteKeyName() : string
+    public function getRouteKeyName(): string
     {
         return 'slug';
     }
 
-    public function imageUrl() : string
+    public function imageUrl(): string
     {
         return storage::url($this->image);
     }
 
+    public function scopeByAuthor($query, $authorId = null)
+    {
+        return  $query->where('author_id', $authorId ?? Auth::id());
+    }
 }

@@ -8,7 +8,7 @@
 <div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
     <!-- Titre et Message de Bienvenue -->
     <div class="tw-mt-4 tw-mb-8">
-        <h1 class="tw-text-2xl tw-font-bold tw-text-gray-800">Hello, Bonjour eliezer tamba !</h1>
+        <h1 class="tw-text-2xl tw-font-bold tw-text-gray-800">Hello, Bonjour {{\Illuminate\Support\Facades\Auth::user()->name}} !</h1>
         <p class="tw-text-lg tw-text-gray-600">Dashboard</p>
     </div>
 

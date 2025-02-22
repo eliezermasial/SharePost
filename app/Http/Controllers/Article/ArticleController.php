@@ -18,7 +18,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::All();
+        if (Auth::user()->role == 'admin') {
+            $articles = Article::all();
+        } else {
+            $articles = Article::ByAuthor()->get();
+        }
 
         return view('back.article.index', ['articles' => $articles]);
     }
@@ -29,7 +33,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::active()->get();
-
+        
         return view('back.article.create', ['categories' => $categories]);
     }
 
@@ -63,7 +67,7 @@ class ArticleController extends Controller
         ]);
 
         $article->tag($tags);
-        
+
         return redirect()->route('article.index')
                 ->with('success', 'Article ajouté avec succès');
     }
@@ -105,7 +109,7 @@ class ArticleController extends Controller
         }
 
         $tags = isset($validatedData['tags']) ? explode(',', $validatedData['tags']) : [];
-    
+
         $article->update([
             'image' => $image,
             'title' => $validatedData['title'],

@@ -16,7 +16,7 @@ Route::get('/', function () {
 //routes de dashboard
 Route::get('/dashboard', function () {
     return view('back.Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'checkRole',])->name('dashboard');
 
 //routes de profile
 Route::middleware('auth')->group(function () {
@@ -26,18 +26,18 @@ Route::middleware('auth')->group(function () {
 });
 
 //routes de resources de categories
-Route::resource('/category', CategoryController::class)->middleware('auth');
+Route::resource('/category', CategoryController::class)->middleware('admin');
 
 //routes de resources d'article
 Route::resource('/article', ArticleController::class)->middleware('auth');
 
 //routes de resources des Autheurs
-Route::resource('/author', UserController::class)->middleware('auth');
+Route::resource('/author', UserController::class)->middleware('admin');
 
 //routes de resources des medias sociaux
-Route::resource('/mediaSocial', MediaSocialController::class)->middleware('auth');
+Route::resource('/mediaSocial', MediaSocialController::class)->middleware('admin');
 
 //routes de resources des paramettres
-Route::resource('/seting', SetingsController::class)->middleware('auth');
+Route::resource('/seting', SetingsController::class)->middleware('admin');
 
 require __DIR__.'/auth.php';

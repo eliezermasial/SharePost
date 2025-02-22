@@ -39,7 +39,7 @@
                         @foreach ($articles as $article)
                             <tr class="tw-border-b">
                                 <td class="tw-py-3 tw-px-4">ART-0 {{$article->id}} </td>
-                                <td class="tw-py-3 tw-px-4"> {{$article->title}} </td>
+                                <td class="tw-py-3 tw-px-4"> {{$article->author->role}} </td>
                                 <td class="tw-py-3 tw-px-4">
                                     <img 
                                     src="{{ $article->imageUrl()}}" 
@@ -76,7 +76,7 @@
                                                 alt="User"
                                             >
                                         </a>
-                                    <a href="{{route('profile.edit')}}" class="tw-text-sm tw-pt-3 hover:tw-text-teal-200">{{explode(' ', $article->author->name)[1]}}</a>
+                                    <a href="{{route('profile.edit')}}" class="tw-text-sm tw-pt-3 hover:tw-text-teal-200">{{explode(' ', $article->author->name)[0]}}</a>
                                 </div>
                                 </td>
                                 <td class="tw-py-3 tw-px-4">{{$article->category->name}} </td>
