@@ -24,7 +24,7 @@
                 <div class="tw-flex tw-flex-col sm:tw-flex-row tw-justify-between tw-gap-4">
                     <div>
                         <label class="tw-block tw-mb-2">Titre</label>
-                        <input type="text" name="title" class="max-md:tw-w-full tw-p-2 tw-rounded-md tw-border-2 tw-border-[#2423236e]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600" value=" {{ isset($article) ? old('title', $article->title) : old('title') }}" placeholder="titre de l'article">
+                        <input type="text" name="title" class="max-md:tw-w-full tw-p-2 tw-rounded-md tw-border-2 tw-border-[#2423236e]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600" value=" {{ isset($article) ? old('title', $article->title) : old('title') }}">
                     </div>
                     <div>
                         <label class="tw-block tw-mb-2">Catégorie</label>
@@ -152,7 +152,7 @@
 
                     <div>
                         <label class="tw-block ">Contenu</label>
-                        <textarea name="content" rows="5" class="tw-w-full tw-p-2 tw-rounded-md tw-border-2 tw-border-[#2423236e]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600"></textarea>
+                        <textarea name="content" rows="5" class="tw-w-full tw-p-2 tw-rounded-md tw-border-2 tw-border-[#2423236e] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600"></textarea>
                     </div>
                     <div x-data="tagsManager({{ isset($article) ? json_encode($article->tags->pluck('name')->toArray()) : '[]' }})" class="tw-space-y-4">
                         <!-- Liste des Tags existants -->

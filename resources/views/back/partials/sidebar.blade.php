@@ -189,27 +189,37 @@
                 </li>
             </ul>
         </li>
+
         <li class="tw-pt-2">
-            <a href="#" class="tw-flex tw-py-3 tw-px-4  hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white  toggle-submenu tw-items-center">
+            <a href="#" 
+               class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
+               {{ Request::is('seting*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
+               toggle-submenu tw-items-center">
+
                 <i class="fa fa-cogs fa-lg tw-mr-2"></i>
                 <span>Paramètres</span>
-                <i class="fa fa-chevron-right fa-xs submenu-toggle tw-ml-auto"></i>
+                <i class="fa fa-xs submenu-toggle tw-ml-auto {{ Request::is('seting*') ? 'fa-chevron-down' : 'fa-chevron-right' }}"></i>
             </a>
-            <ul class="tw-pl-6 submenu" style="display: none;">
+            <ul class="tw-pl-6 tw-text-sm submenu {{ Request::is('seting*') ? 'tw-block' : 'tw-hidden' }}">
                 <li>
-                    <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
+                    <a href="{{ route('seting.index') }}" 
+                       class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                       {{ Route::currentRouteName() == 'seting.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
                         <i class="fa fa-circle fa-xs tw-mr-2"></i>
-                        <span>Sous-lien 1</span>
+                        <span>seting</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
+                    <a href="{{ route('seting.create') }}" 
+                       class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                       {{ Route::currentRouteName() == 'seting.create' || Route::currentRouteName()== 'seting.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                         <i class="fa fa-circle fa-xs tw-mr-2"></i>
-                        <span>Sous-lien 2</span>
+                        <span> {{Route::currentRouteName() == 'seting.edit' ? 'Editer site' : 'Ajouter un site'}} </span>
                     </a>
                 </li>
             </ul>
         </li>
+
         <li class="tw-pt-3 tw-pb-1">
             <a href="#" class="tw-flex tw-py-2 tw-px-4  hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white  toggle-submenu tw-items-center">
                 <i class="fa fa-folder fa-lg tw-mr-2"></i>

@@ -18,15 +18,15 @@
                     <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4 tw-mt-5">
                         <div class="">
                             <label class="tw-block tw-font-medium">Nom du reseau</label>
-                            <input type="text" name="name" class="tw-w-full tw-px-4 tw-py-2 tw-mt-5 tw-rounded-lg tw-border-2 tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
+                            <input type="text" name="name" value="{{ old('name', $mediaSocial->name)}}" class="tw-w-full tw-px-4 tw-py-2 tw-mt-5 tw-rounded-lg tw-border-2 tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
                         </div>
                         <div class="">
                             <label class="tw-block tw-font-medium">lien</label>
-                            <input type="text" name="lien" class="tw-w-full tw-px-4 tw-py-2 tw-mt-5 tw-rounded-lg tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
+                            <input type="text" name="lien" value="{{ old('lien', $mediaSocial->lien)}}" class="tw-w-full tw-px-4 tw-py-2 tw-mt-5 tw-rounded-lg tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
                         </div>
                         <div class="">
                             <label class="tw-block tw-font-medium">icon</label>
-                            <input type="text" name="icon" class="tw-w-full tw-px-4 tw-py-2 tw-mt-5 tw-rounded-lg tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
+                            <input type="text" name="icon" value="{{ old('icon', $mediaSocial->icon)}}" class="tw-w-full tw-px-4 tw-py-2 tw-mt-5 tw-rounded-lg tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
                         </div>
                     </div>
                     <button type="submit" class="tw-mt-5 tw-bg-teal-600 tw-text-white tw-px-4 tw-py-2 tw-rounded-lg tw-w-full md:tw-w-auto">Enregistrer</button>

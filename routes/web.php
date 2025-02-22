@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Seting\SetingsController;
 use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\MediaSocial\MediaSocialController;
@@ -35,5 +36,8 @@ Route::resource('/author', UserController::class)->middleware('auth');
 
 //routes de resources des medias sociaux
 Route::resource('/mediaSocial', MediaSocialController::class)->middleware('auth');
+
+//routes de resources des paramettres
+Route::resource('/seting', SetingsController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';

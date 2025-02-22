@@ -23,7 +23,7 @@
                         </div>
                         <div class="tw-form-group">
                             <label class="tw-block tw-font-medium tw-mb-3">Description</label>
-                            <textarea name="description" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-rounded-lg" rows="5"></textarea>
+                            <textarea name="description" class="tw-w-full tw-px-4 tw-py-2 tw-rounded-lg tw-border-2 tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600" rows="5"></textarea>
                         </div>
                         <div class="tw-form-group">
                             <label class="tw-block tw-font-medium tw-mb-3"> Activation </label>
