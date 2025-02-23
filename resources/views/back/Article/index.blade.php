@@ -16,10 +16,6 @@
 
         <!-- Articles Récents -->
         <div class="tw-bg-white tw-rounded-lg tw-shadow-md tw-p-6">
-            <div class="tw-flex tw-justify-between tw-items-center tw-mb-4">
-                <h2 class="tw-text-xl tw-font-semibold tw-text-gray-800">Articles récents</h2>
-                <button class="tw-bg-teal-600 tw-text-white tw-py-2 tw-px-4 tw-rounded-md hover:tw-bg-teal-700">Voir tous</button>
-            </div>
             <div class="tw-overflow-x-auto">
                 <table class="tw-w-full tw-text-left tw-border-collapse">
                     <thead>

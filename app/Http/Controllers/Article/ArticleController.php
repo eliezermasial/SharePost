@@ -33,7 +33,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::active()->get();
-        
+
         return view('back.article.create', ['categories' => $categories]);
     }
 

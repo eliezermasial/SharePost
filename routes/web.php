@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Article;
+use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
@@ -15,8 +18,32 @@ Route::get('/', function () {
 
 //routes de dashboard
 Route::get('/dashboard', function () {
-    return view('back.Dashboard');
+
+    $user = Auth::user();
+    $articles_author = null;
+    
+    if($user->role == 'author') {
+
+        $articles_author = Article::where('author_id', $user->id)->count();
+    }
+
+    $articles = Article::count();
+    $recent_articles = Article::orderBy('created_at', 'Desc')->get();
+    $categories = Category::all();
+
+    return view('back.Dashboard',[
+        'articles' => $articles,
+        'categories'=> $categories,
+        'articles_author'=> $articles_author,
+        'recent_articles'=> $recent_articles
+    ]);
+    
 })->middleware(['auth', 'verified', 'checkRole',])->name('dashboard');
+
+/*
+Route::get('/recent_article', function () {
+    $recent_articles = Article::orderBy('created_at', 'Desc')->get();
+})*/
 
 //routes de profile
 Route::middleware('auth')->group(function () {
