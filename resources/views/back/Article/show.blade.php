@@ -3,7 +3,7 @@
 @section('title', optional($article)->exists() ? $article->title : 'Aucune article trouvé')
 
 @section('content')
-<div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+<div class="tw-p-6 tw-pb-28 tw-bg-cyan-50 tw-min-h-screen">
     <div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
     <!--<div class="tw-w-full tw-flex tw-flex-col tw-justify-center tw-items-center tw-max-w-4xl tw-mx-auto tw-bg-cyan-50 tw-min-h-screen tw-p-6 lg:tw-px-10">-->
     

@@ -30,6 +30,9 @@
       @yield('content')
     </main>
 
+    <!-- footer -->
+    @include('back.partials.footer')
+    
     <!-- scripty js -->
     @include('back.partials.scripts')
     

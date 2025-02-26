@@ -3,7 +3,7 @@
 @section('title', 'Articles')
 
 @section('content')
-<div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+<div class="tw-p-6 tw-pb-28 tw-bg-cyan-50 tw-min-h-screen">
     <div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
 
         <!-- Titre et Message de Bienvenue -->
@@ -40,7 +40,7 @@
                                     <img 
                                     src="{{ $article->imageUrl()}}" 
                                     class="tw-w-16 tw-h-10 tw-cursor-pointer tw-rounded-sm tw-border"
-                                    alt="{{$article->title}}">
+                                    alt="{{$article->image ? $article->title : ''}}">
                                 </td>
                                 <td class="tw-py-3 tw-px-4">
                                     @if ($article->isActive == 1)
@@ -69,7 +69,7 @@
                                             <img 
                                                 src="{{ asset('back_auth/assets/profile/'.$article->author->image) }}" 
                                                 class="tw-w-10 tw-h-10 tw-cursor-pointer tw-rounded-full tw-border"
-                                                alt="User"
+                                                alt="{{$article->author->image ? $article->author->name : ''}}"
                                             >
                                         </a>
                                     <a href="{{route('profile.edit')}}" class="tw-text-sm tw-pt-3 hover:tw-text-teal-200">{{explode(' ', $article->author->name)[0]}}</a>

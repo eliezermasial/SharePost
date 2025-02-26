@@ -13,7 +13,7 @@ use App\Http\Controllers\MediaSocial\MediaSocialController;
 
 //routes de la page d'accueil
 Route::get('/', function () {
-    return view('auth.login');
+    return view('home.home');
 });
 
 //routes de dashboard
@@ -39,11 +39,6 @@ Route::get('/dashboard', function () {
     ]);
     
 })->middleware(['auth', 'verified', 'checkRole',])->name('dashboard');
-
-/*
-Route::get('/recent_article', function () {
-    $recent_articles = Article::orderBy('created_at', 'Desc')->get();
-})*/
 
 //routes de profile
 Route::middleware('auth')->group(function () {

@@ -4,7 +4,7 @@
 
 @section('content')
     @if (Route::currentRouteName() == 'author.edit')
-        <div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+        <div class="tw-p-6 tw-bg-cyan-50 tw-pb-28 tw-min-h-screen">
             <div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
                 <!-- Titre et Message de Bienvenue -->
                 <div class=" tw-flex tw-justify-between tw-py-5 tw-mb-5 tw-mt-4 md:tw-mb-7">
@@ -28,7 +28,7 @@
             </div>
         </div>
     @else
-        <div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+        <div class="tw-p-6 tw-bg-cyan-50 tw-pb-28 tw-min-h-screen">
             <div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
                 <!-- Titre et Message de Bienvenue -->
                 <div class=" tw-flex tw-justify-between tw-py-5 tw-mb-5 md:tw-mb-7">

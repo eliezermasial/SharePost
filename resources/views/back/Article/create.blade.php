@@ -5,7 +5,7 @@
 @section('content')
 
 @if (Route::currentRouteName() == 'article.edit')
-    <div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+    <div class="tw-p-6 tw-pb-28 tw-bg-cyan-50 tw-min-h-screen">
         <div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
 
         <div class="tw-my-5 tw-pb-5">
@@ -117,7 +117,7 @@
 
 @else
     
-    <div class="tw-p-6 tw-bg-cyan-50 tw-min-h-screen">
+    <div class="tw-p-6 tw-pb-28 tw-bg-cyan-50 tw-min-h-screen">
         <div class="tw-pt-16 tw-pb-3 md:tw-ml-56 md:tw-pl-6">
 
             <div class="tw-my-4 tw-pb-5">

@@ -1,4 +1,4 @@
-<aside class="tw-w-64 tw-overflow-auto tw-fixed tw-h-full tw-bg-white tw-pb-5 tw-text-black tw-hidden md:tw-block tw-border-r">
+<aside class="tw-w-64 {{Illuminate\Support\Facades\Auth::user()->role == 'admin' ? 'tw-overflow-auto' : ''}}  tw-fixed tw-h-full tw-bg-white tw-pb-5 tw-text-black tw-hidden md:tw-block tw-border-r">
 
     <div class="tw-flex tw-justify-center tw-bg-teal-700 tw-px- tw-py-2">
         <img
@@ -80,9 +80,9 @@
             @can('admin_access')
                 <li class="tw-pt-2">
                     <a href="#" 
-                    class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
-                    {{ Request::is('category*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
-                    toggle-submenu tw-items-center">
+                        class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
+                        {{ Request::is('category*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
+                        toggle-submenu tw-items-center">
 
                         <i class="fa fa-list fa-lg tw-mr-2"></i>
                         <span>Catégories</span>
@@ -91,16 +91,16 @@
                     <ul class="tw-pl-6 tw-text-sm submenu {{ Request::is('category*') ? 'tw-block' : 'tw-hidden' }}">
                         <li>
                             <a href="{{ route('category.index') }}" 
-                            class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                            {{ Route::currentRouteName() == 'category.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
+                                class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                                {{ Route::currentRouteName() == 'category.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
                                 <span>Voir les catégories</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('category.create') }}" 
-                            class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                            {{ Route::currentRouteName() == 'category.create' || Route::currentRouteName()== 'category.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
+                                class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                                {{ Route::currentRouteName() == 'category.create' || Route::currentRouteName()== 'category.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
                                 <span> {{Route::currentRouteName() == 'category.edit' ? 'Editer categorie' : 'Ajouter catégorie'}} </span>
                             </a>
@@ -110,9 +110,9 @@
 
                 <li class="tw-pt-2">
                     <a href="#" 
-                    class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
-                    {{ Request::is('author*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
-                    toggle-submenu tw-items-center">
+                        class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
+                        {{ Request::is('author*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
+                        toggle-submenu tw-items-center">
 
                         <i class="fa fa-list fa-lg tw-mr-2"></i>
                         <span>Autheurs</span>
@@ -121,16 +121,16 @@
                     <ul class="tw-pl-6 tw-text-sm submenu {{ Request::is('author*') ? 'tw-block' : 'tw-hidden' }}">
                         <li>
                             <a href="{{ route('author.index') }}" 
-                            class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                            {{ Route::currentRouteName() == 'author.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
+                                class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                                {{ Route::currentRouteName() == 'author.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
                                 <span>Voir les autheurs</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('author.create') }}" 
-                            class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                            {{ Route::currentRouteName() == 'author.create' || Route::currentRouteName()== 'author.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
+                                class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                                {{ Route::currentRouteName() == 'author.create' || Route::currentRouteName()== 'author.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
                                 <span> {{Route::currentRouteName() == 'author.edit' ? 'Editer autheur' : 'Ajouter autheur'}} </span>
                             </a>
@@ -144,23 +144,23 @@
                         {{ Request::is('mediaSocial*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
                         toggle-submenu tw-items-center">
 
-                    <i class="fa fa-share-alt fa-lg tw-mr-2"></i>
-                    <span>Media sociaux</span>
+                        <i class="fa fa-share-alt fa-lg tw-mr-2"></i>
+                        <span> Media sociaux </span>
                         <i class="fa fa-xs submenu-toggle tw-ml-auto {{ Request::is('mediaSocial*') ? 'fa-chevron-down' : 'fa-chevron-right' }}"></i>
                     </a>
                     <ul class="tw-pl-6 tw-text-sm submenu {{ Request::is('mediaSocial*') ? 'tw-block' : 'tw-hidden' }}">
                         <li>
                             <a href="{{ route('mediaSocial.index') }}" 
-                            class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                            {{ Route::currentRouteName() == 'amediaSocial.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
+                                class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                                {{ Route::currentRouteName() == 'amediaSocial.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
                                 <span>tous les reseaux</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('mediaSocial.create') }}" 
-                            class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                            {{ Route::currentRouteName() == 'mediaSocial.create' || Route::currentRouteName()== 'mediaSocial.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
+                                class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                                {{ Route::currentRouteName() == 'mediaSocial.create' || Route::currentRouteName()== 'mediaSocial.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
                                 <span> {{Route::currentRouteName() == 'mediaSocial.edit' ? 'Editer reseau' : 'Ajouter reseau'}} </span>
                             </a>
@@ -193,9 +193,9 @@
 
                 <li class="tw-pt-2">
                     <a href="#" 
-                    class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
-                    {{ Request::is('seting*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
-                    toggle-submenu tw-items-center">
+                        class="tw-flex tw-py-2 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
+                        {{ Request::is('seting*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} 
+                        toggle-submenu tw-items-center">
 
                         <i class="fa fa-cogs fa-lg tw-mr-2"></i>
                         <span>Paramètres</span>
@@ -204,16 +204,16 @@
                     <ul class="tw-pl-6 tw-text-sm submenu {{ Request::is('seting*') ? 'tw-block' : 'tw-hidden' }}">
                         <li>
                             <a href="{{ route('seting.index') }}" 
-                            class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                            {{ Route::currentRouteName() == 'seting.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
+                                class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                                {{ Route::currentRouteName() == 'seting.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
                                 <span>seting</span>
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('seting.create') }}" 
-                            class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
-                            {{ Route::currentRouteName() == 'seting.create' || Route::currentRouteName()== 'seting.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
+                                class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                                {{ Route::currentRouteName() == 'seting.create' || Route::currentRouteName()== 'seting.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
                                 <span> {{Route::currentRouteName() == 'seting.edit' ? 'Editer site' : 'Ajouter un site'}} </span>
                             </a>
