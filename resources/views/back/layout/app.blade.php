@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+
+    <link rel="icon" type="image/png" href="{{ asset('back_auth/assets/img/logo.png') }}" width="100" height="100">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
     <title>@yield('title')</title>
@@ -9,6 +11,7 @@
     <!-- Dashboard - Links -->
     @include('back.partials.styles')
     <!--# Fin Dashbord Link #}-->
+    
   </head>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])

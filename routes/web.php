@@ -40,6 +40,11 @@ Route::get('/dashboard', function () {
     
 })->middleware(['auth', 'verified', 'checkRole',])->name('dashboard');
 
+/*
+Route::get('/recent_article', function () {
+    $recent_articles = Article::orderBy('created_at', 'Desc')->get();
+})*/
+
 //routes de profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

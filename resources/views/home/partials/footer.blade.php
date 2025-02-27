@@ -1,5 +1,5 @@
 <footer class="tw-bg-gray-900 tw-text-white tw-py-10 tw-mt-10">
-    <div class="tw-container tw-mx-auto tw-grid tw-grid-cols-1 md:tw-grid-cols-4 tw-gap-6 tw-px-6">
+    <div class="tw-container tw-mx-auto tw-grid tw-grid-cols-1 md:tw-grid-cols-4 tw-gap-6 tw-px-4">
         <!-- Contactez Nous -->
         <div>
             <h2 class="tw-font-semibold tw-text-lg tw-mb-4">CONTACTEZ NOUS</h2>
@@ -59,9 +59,9 @@
         </div>
 
         <!-- Flickr Photos -->
-        <div>
-            <h2 class="tw-font-semibold tw-text-lg tw-mb-4">FLICKR PHOTOS</h2>
-            <div class="tw-grid tw-grid-cols-3 tw-gap-2">
+        <div class="">
+            <h2 class="md:tw-ml-20 tw-font-semibold tw-text-lg tw-mb-4">FLICKR PHOTOS</h2>
+            <div class="tw-grid tw-grid-cols-3 tw-text-end tw-gap-2 md:tw-ml-20 tw-p-0">
                 <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>
                 <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>
                 <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>

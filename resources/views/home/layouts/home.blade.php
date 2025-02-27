@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0"/>
     <title>@yield('title')</title>
     <meta name="description" content="Dashboard" />
+    @include('home.partials.script')
     
   </head>
 
@@ -14,9 +15,15 @@
     [x-cloak] { display: none !important; }
   </style>
 
- <body class="tw-font-sans " x-data="{ open: false, openMenu: false }">
+ <body class="tw-font-sans " x-data="{ open: false, start: false }">
+    <!-- tobard -->
+    @include('home.partials.tobard')
 
     <!-- Header -->
+    @include('home.partials.header')
+
+    <!-- Breaking News -->
+    @include('home.partials.news')
 
     <!-- Main Content -->
     <main class="tw-h-full">

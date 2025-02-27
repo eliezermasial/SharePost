@@ -64,7 +64,7 @@
                                     @endif
                                 </td>
                                 <td class="tw-py-3 tw-px-1 lg:tw-px-3">
-                                <div class="tw-flex tw-justify-between">
+                                    <div class="tw-flex tw-justify-between">
                                         <a href="{{route('profile.edit')}}">
                                             <img 
                                                 src="{{ asset('back_auth/assets/profile/'.$article->author->image) }}" 
@@ -72,8 +72,8 @@
                                                 alt="{{$article->author->image ? $article->author->name : ''}}"
                                             >
                                         </a>
-                                    <a href="{{route('profile.edit')}}" class="tw-text-sm tw-pt-3 hover:tw-text-teal-200">{{explode(' ', $article->author->name)[0]}}</a>
-                                </div>
+                                        <a href="{{route('profile.edit')}}" class="tw-text-sm tw-pt-3 hover:tw-text-teal-200">{{explode(' ', $article->author->name)[0]}}</a>
+                                    </div>
                                 </td>
                                 <td class="tw-py-3 tw-px-4">{{$article->category->name}} </td>
                                 <td class="tw-py-3 tw-px-4">
