@@ -42,8 +42,7 @@ class CategoryController extends Controller
         ]);
 
         return redirect()->route('dashboard')
-                ->with('success', 'Catégorie ajoutée avec succès !')
-                ->with('error', 'Une erreur est survenue !');
+                ->with('success', 'Catégorie ajoutée avec succès !');
     }
 
     /**
@@ -76,8 +75,7 @@ class CategoryController extends Controller
         ]);
         
         return redirect()->route('dashboard')
-                ->with('success', 'Catégorie modifiée avec succès')
-                ->with('error', 'Une erreur est survenue !');
+                ->with('success', 'Catégorie modifiée avec succès');
     }
 
     /**

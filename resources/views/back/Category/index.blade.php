@@ -48,12 +48,15 @@
                                         <div x-data="{openAction: false}" class="dropdown dropdown-action tw-flex tw-justify-around">
                                             
                                             <div x-show="openAction" x-transition x-cloak class="tw-flex tw-flex-col tw-gap-1 tw-px-2 tw-py-2 tw-bg-[#eff5f569] tw-text-[#fff] tw-rounded-sm">
-                                                <a class="tw-bg-teal-700 hover:tw-bg-[#00968798] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border" href="{{ route('category.edit', $categorie)}}"><i class="fas fa-pencil-alt tw-m-r-5 tw-text-[#fff]"></i> Modifier</a>
+                                                <a class="tw-bg-teal-700 hover:tw-bg-[#00968798] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border" href="{{ route('category.edit', $categorie)}}">
+                                                    <i class="fas fa-pencil-alt tw-m-r-5 tw-text-[#fff]"></i>
+                                                    Modifier
+                                                </a>
                                                 <form action="{{ route('category.destroy', $categorie)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="tw-bg-red-600 hover:tw-bg-[#d47070] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border">
-                                                        <i class="fas fa-trash-alt tw-m-r-5 tw-text-[#fff]"></i>
+                                                    <button type="submit" class=" tw-flex tw-bg-red-600 hover:tw-bg-[#d47070] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border">
+                                                        <i class="fas fa-trash-alt tw-m-r-5 tw-mt-1 tw-text-[#fff]"></i>
                                                         Supprimer
                                                     </button>
                                                 </form>

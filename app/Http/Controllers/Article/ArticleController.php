@@ -122,7 +122,7 @@ class ArticleController extends Controller
 
         $article->retag($tags);
 
-        return redirect()->route('article.index')->with('success', 'Article ajour avec succès');
+        return redirect()->route('article.index')->with('success', 'Article modifié avec succès');
     }
 
     /**

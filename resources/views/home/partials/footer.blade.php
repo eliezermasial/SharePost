@@ -31,12 +31,12 @@
             <h2 class="tw-font-semibold tw-text-lg tw-mb-4">INFOS POPULAIRES</h2>
             <div class="tw-space-y-4">
                 <div class="tw-border-b tw-border-gray-700 tw-pb-2">
-                    <span class="tw-bg-blue-600 tw-text-white tw-px-2 tw-text-xs tw-rounded">BUSINESS</span>
+                    <span class="tw-bg-teal-600 tw-text-white tw-px-2 tw-text-xs tw-rounded">BUSINESS</span>
                     <p class="tw-text-sm tw-mt-1">LOREM IPSUM DOLOR SIT AMET ELIT...</p>
                     <p class="tw-text-xs tw-text-gray-400">Jan 01, 2045</p>
                 </div>
                 <div class="tw-border-b tw-border-gray-700 tw-pb-2">
-                    <span class="tw-bg-blue-600 tw-text-white tw-px-2 tw-text-xs tw-rounded">BUSINESS</span>
+                    <span class="tw-bg-teal-600 tw-text-white tw-px-2 tw-text-xs tw-rounded">BUSINESS</span>
                     <p class="tw-text-sm tw-mt-1">LOREM IPSUM DOLOR SIT AMET ELIT...</p>
                     <p class="tw-text-xs tw-text-gray-400">Jan 01, 2045</p>
                 </div>

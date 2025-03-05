@@ -5,6 +5,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Seting\SetingsController;
 use App\Http\Controllers\Article\ArticleController;
@@ -13,37 +14,14 @@ use App\Http\Controllers\MediaSocial\MediaSocialController;
 
 //routes de la page d'accueil
 Route::get('/', function () {
-    return view('home.home');
+    
+    $articles = Article::where('isActive', 1)->orderBy('created_at', 'Desc')->limit(10)->get();
+    
+    return view('home.home', ['articles' => $articles]);
 });
 
 //routes de dashboard
-Route::get('/dashboard', function () {
-
-    $user = Auth::user();
-    $articles_author = null;
-    
-    if($user->role == 'author') {
-
-        $articles_author = Article::where('author_id', $user->id)->count();
-    }
-
-    $articles = Article::count();
-    $recent_articles = Article::orderBy('created_at', 'Desc')->get();
-    $categories = Category::all();
-
-    return view('back.Dashboard',[
-        'articles' => $articles,
-        'categories'=> $categories,
-        'articles_author'=> $articles_author,
-        'recent_articles'=> $recent_articles
-    ]);
-    
-})->middleware(['auth', 'verified', 'checkRole',])->name('dashboard');
-
-/*
-Route::get('/recent_article', function () {
-    $recent_articles = Article::orderBy('created_at', 'Desc')->get();
-})*/
+Route::get('/dashboard',[DashboardController::class, 'dashbord'] )->name('dashboard')->middleware(['auth', 'verified', 'checkRole',]);
 
 //routes de profile
 Route::middleware('auth')->group(function () {

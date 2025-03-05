@@ -102,7 +102,7 @@
                                 class="tw-block tw-py-1 tw-px-4 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
                                 {{ Route::currentRouteName() == 'category.create' || Route::currentRouteName()== 'category.edit' ? 'tw-bg-[#0096878e] tw-text-white tw-my-2 tw-rounded-md' : '' }}">
                                 <i class="fa fa-circle fa-xs tw-mr-2"></i>
-                                <span> {{Route::currentRouteName() == 'category.edit' ? 'Editer categorie' : 'Ajouter catégorie'}} </span>
+                                <span> {{Route::currentRouteName() == 'category.edit' ? 'Editer categorie' : 'Ajoutez catégorie'}} </span>
                             </a>
                         </li>
                     </ul>

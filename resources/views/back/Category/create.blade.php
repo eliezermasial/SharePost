@@ -19,15 +19,17 @@
                     <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4">
                         <div class="tw-form-group">
                             <label class="tw-block tw-font-medium tw-mb-3">Nom de la catégorie</label>
-                            <input type="text" name="name" value="{{old('name', $categorie->name)}}" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-rounded-lg">
+                            <input type="text" name="name" value="{{old('name', $categorie->name)}}" class="tw-w-full tw-px-4 tw-py-2 tw-rounded-lg tw-border-2 tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
                         </div>
                         <div class="tw-form-group">
                             <label class="tw-block tw-font-medium tw-mb-3">Description</label>
-                            <textarea name="description" class="tw-w-full tw-px-4 tw-py-2 tw-rounded-lg tw-border-2 tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600" rows="5"></textarea>
+                            <textarea name="description" class="tw-w-full tw-px-4 tw-py-2 tw-rounded-lg tw-border-2 tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600" rows="5">
+                                {{$categorie->description}}
+                            </textarea>
                         </div>
                         <div class="tw-form-group">
                             <label class="tw-block tw-font-medium tw-mb-3"> Activation </label>
-                            <select name="isActive" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-rounded-lg">
+                            <select name="isActive" class="tw-w-full tw-px-4 tw-py-2 tw-rounded-lg tw-border-2 tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
                                 <option @if ($categorie->isActive == 1) selected @endif value="1">Activer</option>
                                 <option @if ($categorie->isActive == 0) selected @endif value="0">Ne pas activer</option>
                             </select>
@@ -51,15 +53,15 @@
                     <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-4">
                         <div class="">
                             <label class="tw-block tw-font-medium">Nom de la catégorie</label>
-                            <input type="text" name="name" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-mt-3 tw-rounded-lg">
+                            <input type="text" name="name" class="tw-w-full tw-px-4 tw-py-2 tw-mt-3 tw-border-2 tw-rounded-lg tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
                         </div>
                         <div class="tw-form-group">
                             <label class="tw-block tw-font-medium">Description</label>
-                            <textarea name="description" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-mt-3 tw-rounded-lg" rows="5"></textarea>
+                            <textarea name="description" class="tw-w-full tw-border-2 tw-px-4 tw-py-2 tw-mt-3 tw-rounded-lg tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600" rows="5"></textarea>
                         </div>
                         <div class="tw-form-group">
                             <label class="tw-block tw-font-medium">Activation</label>
-                            <select name="isActive" class="tw-w-full tw-border tw-px-4 tw-py-2 tw-mt-3 tw-rounded-lg">
+                            <select name="isActive" class="tw-w-full tw-border-2 tw-px-4 tw-py-2 tw-mt-3 tw-rounded-lg tw-border-[#242323b4] focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
                                 <option value="1">Activer</option>
                                 <option value="0">Ne pas activer</option>
                             </select>

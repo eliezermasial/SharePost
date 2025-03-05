@@ -37,7 +37,7 @@
                 >
                 <div>
                     <h6 class="tw-font-semibold">{{ Illuminate\Support\Facades\Auth::user()->name }}</h6>
-                    <p class="tw-text-sm tw-text-gray-500">Administrateur</p>
+                    <p class="tw-text-sm tw-text-gray-500">{{ Illuminate\Support\Facades\Auth::user()->role == 'admin' ? 'Administrateur' : 'Autheur' }}</p>
                 </div>
             </div>
 
