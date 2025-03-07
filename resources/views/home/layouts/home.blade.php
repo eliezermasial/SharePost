@@ -25,8 +25,8 @@
     @include('home.partials.sider')
     
     <!-- Main Content -->
-    <main class="tw-h-full">
-      
+    <main class="tw-h-full tw-bg-gray-100 tw-py-10">
+      @yield('content')
     </main>
 
     <!-- footer -->

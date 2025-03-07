@@ -1,4 +1,4 @@
-<footer class="tw-bg-gray-900 tw-text-white tw-py-10 tw-mt-10">
+<footer class="tw-bg-gray-900 tw-text-white tw-py-10">
     <div class="tw-container tw-mx-auto tw-grid tw-grid-cols-1 md:tw-grid-cols-4 tw-gap-6 tw-px-4">
         <!-- Contactez Nous -->
         <div>

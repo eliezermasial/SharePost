@@ -1,8 +1,6 @@
 <?php
-
 use App\Models\Article;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -16,8 +14,9 @@ use App\Http\Controllers\MediaSocial\MediaSocialController;
 Route::get('/', function () {
     
     $articles = Article::where('isActive', 1)->orderBy('created_at', 'Desc')->limit(10)->get();
+    $categories = Category::orderBy('created_at', 'Desc')->where('isActive', 1)->limit(10)->with('articles')->get();
     
-    return view('home.home', ['articles' => $articles]);
+    return view('home.home', ['articles' => $articles, 'categories' => $categories]);
 });
 
 //routes de dashboard

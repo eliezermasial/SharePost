@@ -1,5 +1,5 @@
 <!-- Header -->
-<header>
+<header class="tw-pb-8">
     <!-- Top Bar -->
     <div class="topBar tw-bg-gray-900 tw-text-gray-300 tw-text-sm">
         <div class="tw-container tw-mx-auto tw-flex tw-justify-between tw-items-center tw-py-2 tw-px-4">
@@ -33,7 +33,7 @@
             </h1>
 
             <!-- Navigation -->
-            <nav class="tw-flex tw-space-x-6 tw-items-center">
+            <nav class="tw-hidden md:tw-flex tw-space-x-6 tw-items-center">
                 <a href="#" class="tw-text-yellow-500 tw-font-bold tw-px-3">ACCUEIL</a>
                 <a href="#" class="tw-text-gray-800 hover:tw-text-yellow-500">POST</a>
             
