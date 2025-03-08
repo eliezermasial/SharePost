@@ -4,8 +4,8 @@
 
 @section('content')
 
-<div class="tw-container tw-mx-auto tw-px-4 tw-py-8">
-
+<div class="tw-container tw-mx-auto tw-px-4 tw-py-3">
+    
     <!-- Section Populaires -->
     <div class="tw-bg-white tw-shadow tw-rounded-md tw-p-4">
         <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-border-yellow-500 tw-pl-2">POPULAIRES</h2>
@@ -51,8 +51,8 @@
             @endforeach
         </div>
 
-        
         <div class="tw-flex tw-flex-col tw-gap-10 max-md:tw-col-span-2">
+
             <!-- Section Suivez-nous -->
             <div class="tw-bg-white tw-shadow tw-rounded-md max-md:tw-col-span-2">
                 <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-py-2 tw-border-b-2 tw-border-l-yellow-500 tw-border-b-gray-200 tw-pl-2">
@@ -86,16 +86,31 @@
                 <div class="tw-mt-4 tw-p-4 tw-pt-0 tw-space-y-2">
                     @foreach ($Global_recent_articles as $article)
                         <div class="tw-flex tw-items-center tw-text-whit tw-p-2 tw-rounded">
-                            <div class="tw-flex tw-gap-2 tw-bg-red-500">
+                            <div class="tw-flex tw-gap-2">
                                 <img src="{{$article->imageUrl()}}" class="tw-w-[50%] tw-h-[35%]" alt="{{$article->title}}">
-                                <div class="tw-bg-gray-500">
-                                    <span class="tw-p- tw-text-white tw-font-bold tw-bg-teal-600"> {{$article->category->name}} </span>
-                                    <h4 class="tw-text-[#0000007e]">{{$article->title}} </h4>
+                                <div class="">
+                                    <div class="tw-px-2 tw-mb-2 tw-py-1 tw-w-full tw-rounded-sm tw-bg-teal-600">
+                                        <span class="tw-w-[100%] tw-font-bold-sm tw-text-white">{{$article->category->name}}</span>
+                                    </div>
+                                    <h4 class=" tw-text-base tw-font-bold tw-text-[#000000bd]">{{$article->title}} </h4>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                    
+                </div>
+            </div>
+            
+            <!-- Liste des tags enregistrés -->
+            <div class="tw-bg-white tw-shadow tw-rounded-md max-md:tw-col-span-2">
+                <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-py-2 tw-border-b-2 tw-border-l-yellow-500 tw-border-b-gray-200 tw-pl-2">
+                    TAGS
+                </h2>
+                <div class="tw-mt-4 tw-p-4 tw-pt-0 tw-grid tw-grid-cols-2 tw-gap-2">
+                    @foreach ($Global_tags->take(16) as $tag)
+                        <div class="block_tag tw-border-2 tw-border-teal-900 hover:tw-text-[#ffff] hover:tw-bg-teal-900 hover:tw-p-3 tw-p-2 tw-rounded tw-h-10 tw-flex tw-items-center">
+                            <span class="tw-truncate tw-w-full">{{$tag->name}}</span>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

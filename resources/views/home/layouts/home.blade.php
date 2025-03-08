@@ -16,7 +16,7 @@
     [x-cloak] { display: none !important; }
   </style>
 
- <body class="tw-font-sans " x-data="{ open: false, start: false }">
+ <body class="tw-font-sans" x-data="{ open: false, start: false }">
 
     <!-- Header -->
     @include('home.partials.header')
