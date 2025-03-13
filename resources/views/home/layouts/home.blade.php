@@ -51,5 +51,14 @@
         min-width: max-content;
       }
     </style>
+      @if (session('success'))
+      <script>
+        iziToast.success({
+          title: 'succès',
+          message: '{{ session('success') }}',
+          position: 'topRight'
+        });
+      </script>
+    @endif
   </body>
 </html>

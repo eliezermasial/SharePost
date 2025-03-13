@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="tw-flex tw-space-x-2">
                                             <span>👁️ {{$article->views}}</span>
-                                            <span>💬 123</span>
+                                            <span>💬 {{$article->comments()->count()}}</span>
                                         </div>
                                     </div>
                                 </div>

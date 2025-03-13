@@ -1,8 +1,9 @@
 <?php
+
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Request;
+use \App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\UserController;
@@ -21,17 +22,11 @@ Route::get('/', function () {
     
 })->name('home');
 
-Route::get('/article/{slug}', function ($slug) {
+//routes de la page de detail
+Route::get('/article/{slug}', [DetailController::class, 'index'])->name('detail');
 
-    $article = Article::where('slug', $slug)->first();
-    
-    $newViews = $article->views + 1;
-    $article->views = $newViews;
-    $article->update();
-
-    return view('home.detail', ['article' => $article]);
-    
-})->name('detail');
+//routes de la page de comment
+Route::post('/article/{id}/comment', [DetailController::class, 'comment'])->name('comment');
 
 //routes de dashboard
 Route::get('/dashboard',[DashboardController::class, 'dashbord'] )->name('dashboard')->middleware(['auth', 'verified', 'checkRole',]);
