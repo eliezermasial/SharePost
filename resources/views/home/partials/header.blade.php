@@ -69,6 +69,9 @@
         </div>
     </div>
 
+    @if (Route::currentRouteName()== 'home')
+        
+    
     <!-- Breaking News -->
     <div x-init="start = true" class="tw-bg-black tw-w-full tw-px-4 md:tw-px-6 tw-text-white tw-py-2 tw-overflow-hidden">
         <div class="tw-flex tw-items-center tw-gap-4 md:tw-px-6 tw-whitespace-nowrap">
@@ -84,7 +87,7 @@
                     })"
                     class="tw-inline-flex tw-space-x-8">
                     
-                    @foreach ($articles as $article)
+                    @foreach ($Global_recent_articles->take(10) as $article)
                         <span class="tw-inline-block tw-text-yellow-500 ">
                             {{$article->title .'. '}}
                         </span>
@@ -93,5 +96,6 @@
             </div>
         </div>
     </div>
+    @endif
 
 </header>

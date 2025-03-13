@@ -31,15 +31,16 @@
                                     <div class="tw-bg-red">
                                         <img src="{{$article->imageUrl()}}" alt="">
                                     </div>
-                                    <h3 class="tw-text-lg tw-font-bold tw-mt-2">{{$article->title}} </h3>
-                                    <p class="tw-text-gray-600 tw-text-sm tw-mt-2">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna rebun clita rebum dolor stet amet justo</p>
+                                    <a href="{{ route('detail', $article->slug)}}">
+                                        <h3 class="tw-text-lg tw-font-bold tw-mt-2">{{$article->title}}</h3>
+                                    </a>
                                     <div class="tw-flex tw-justify-between tw-items-center tw-mt-4 tw-text-gray-500 tw-text-xs">
                                         <div class="tw-flex tw-gap-2">
                                             <img src="{{ asset('back_auth/assets/profile/'.$article->author->image) }}" class="tw-w-10 tw-h-10 tw-rounded-full" alt="{{$article->author->image ? explode(' ', $article->author->name)[0] : 'image'}}">
                                             <span class="tw-mt-3">{{$article->author->name}} </span>
                                         </div>
                                         <div class="tw-flex tw-space-x-2">
-                                            <span>👁️ 12,345</span>
+                                            <span>👁️ {{$article->views}}</span>
                                             <span>💬 123</span>
                                         </div>
                                     </div>
@@ -84,7 +85,7 @@
                     RECENTES ARTICLES
                 </h2>
                 <div class="tw-mt-4 tw-p-4 tw-pt-0 tw-space-y-2">
-                    @foreach ($Global_recent_articles as $article)
+                    @foreach ($Global_recent_articles->take(5) as $article)
                         <div class="tw-flex tw-items-center tw-text-whit tw-p-2 tw-rounded">
                             <div class="tw-flex tw-gap-2">
                                 <img src="{{$article->imageUrl()}}" class="tw-w-[50%] tw-h-[35%]" alt="{{$article->title}}">

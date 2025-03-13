@@ -2,6 +2,7 @@
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\UserController;
@@ -17,7 +18,20 @@ Route::get('/', function () {
     $categories = Category::orderBy('created_at', 'Desc')->where('isActive', 1)->limit(10)->with('articles')->get();
     
     return view('home.home', ['articles' => $articles, 'categories' => $categories]);
-});
+    
+})->name('home');
+
+Route::get('/article/{slug}', function ($slug) {
+
+    $article = Article::where('slug', $slug)->first();
+    
+    $newViews = $article->views + 1;
+    $article->views = $newViews;
+    $article->update();
+
+    return view('home.detail', ['article' => $article]);
+    
+})->name('detail');
 
 //routes de dashboard
 Route::get('/dashboard',[DashboardController::class, 'dashbord'] )->name('dashboard')->middleware(['auth', 'verified', 'checkRole',]);

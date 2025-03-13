@@ -21,8 +21,10 @@
     <!-- Header -->
     @include('home.partials.header')
 
-    <!-- sider -->
-    @include('home.partials.sider')
+    @if (Route::currentRouteName() == 'home')
+      <!-- sider -->
+      @include('home.partials.sider')
+    @endif
     
     <!-- Main Content -->
     <main class="tw-h-full tw-bg-gray-100 tw-py-10">
