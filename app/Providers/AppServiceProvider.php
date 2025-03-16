@@ -32,6 +32,5 @@ class AppServiceProvider extends ServiceProvider
         view()->share('Global_sociaux', $socials);
         view()->share('Global_category', $categories);
         view()->share('Global_recent_articles', $articles);
-
     }
 }

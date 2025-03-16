@@ -55,25 +55,25 @@
                 </ul>
             </li>
 
-            <li class="tw-pt-2">
-                <a href="#" class="tw-flex tw-py-3 tw-px-4  hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white  toggle-submenu tw-items-center">
-                    <i class="fa fa-comment fa-lg tw-mr-2"></i>
-                    <span>Commentaires</span>
-                    <i class="fa fa-chevron-right fa-xs submenu-toggle tw-ml-auto"></i>
+            <li class="tw-pt-5">
+                <a href="#" class="tw-flex tw-py-3 tw-px-4 hover:tw-bg-teal-600 hover:tw-rounded-md hover:tw-shadow-md hover:tw-text-white 
+                    {{ Request::is('comment*') ? 'tw-bg-teal-600 tw-rounded-md tw-mb-2 tw-shadow-md tw-text-white' : '' }} toggle-submenu tw-items-center">
+                    
+                    <i class="fa fa-newspaper fa-lg tw-mr-2"></i>
+                    <span>Commmentaire</span>
+                    <i class="fa fa-xs submenu-toggle tw-ml-auto {{ Request::is('comment*') ? 'fa-chevron-down' : 'fa-chevron-right' }}">
+                    </i>
                 </a>
-                <ul class="tw-pl-6 submenu" style="display: none;">
+                <ul class="tw-pl-6 submenu {{ Request::is('comment*') ? 'tw-block' : 'tw-hidden' }}">
                     <li>
-                        <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
+                        <a href="{{ route('comment.index') }}" 
+                            class="tw-block tw-py-1 tw-px-3 tw-mt-2 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md 
+                            {{ Route::currentRouteName() == 'comment.index' ? 'tw-bg-[#0096878e] tw-text-white tw-rounded-md' : '' }}">
                             <i class="fa fa-circle fa-xs tw-mr-2"></i>
-                            <span>Sous-lien 1</span>
+                            <span>Commentaires</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="tw-block tw-py-1 tw-px-4 hover:tw-bg-[#0096878e] hover:tw-text-white hover:tw-rounded-md">
-                            <i class="fa fa-circle fa-xs tw-mr-2"></i>
-                            <span>Sous-lien 2</span>
-                        </a>
-                    </li>
+              
                 </ul>
             </li>
 

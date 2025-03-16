@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Comment;
 
 use App\Models\Comment;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 use App\Http\Requests\Comment\StoreCommentRequest;
 use App\Http\Requests\Comment\UpdateCommentRequest;
 
@@ -14,7 +15,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+        
+        return view('back.Comment.index', ['comments' => $comments]);
     }
 
     /**
@@ -52,9 +55,20 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCommentRequest $request, Comment $comment)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        if ($comment->is_active == true) {
+
+            $comment->is_active = false; // Désactive the comment
+            $message = 'Commentaire désactivé avec succès.';
+        } else {
+            $comment->is_active = true; // Active the comment
+            $message = 'Commentaire activé avec succès.';
+        }
+
+        $comment->save();
+
+        return redirect()->back()->with('success', $message);
     }
 
     /**
@@ -62,6 +76,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return redirect()->back()->with('success', 'Commentaire supprimé avec succès');
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Requests\Comment\StoreCommentRequest;
 
 class DetailController extends Controller
 {
+    // Show detail page
     public function index(string $slug)
     {
         $article = Article::where('slug', $slug)->first();
@@ -20,6 +21,7 @@ class DetailController extends Controller
         return view('home.detail', ['article' => $article]);
     }
 
+    // Add comment
     public function comment (StoreCommentRequest $request, int $id)
     {
         $validated = $request->validated();

@@ -1,5 +1,5 @@
 <!-- Header -->
-<header class="tw-pb-8">
+<header class="{{Route::CurrentRouteName() == 'home' ? 'tw-pb-8' : ''}}">
     <!-- Top Bar -->
     <div class="topBar tw-bg-gray-900 tw-text-gray-300 tw-text-sm">
         <div class="tw-container tw-mx-auto tw-flex tw-justify-between tw-items-center tw-py-2 tw-px-4">

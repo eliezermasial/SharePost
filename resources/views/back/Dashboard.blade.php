@@ -15,8 +15,8 @@
         <!-- Statistiques -->
         <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6 tw-mb-8" x-data="{ stats: [
             { count: {{Illuminate\Support\Facades\Auth::user()->role == 'author' ? $articles_author : $articles}}, text: 'Total Articles', icon: 'fa-user-plus' },
-            { count: {{$categories->count() + 1}}, text: 'Total Catégories', icon: 'fa-dollar-sign' },
-            { count: 1538, text: 'Total Commentaires', icon: 'fa-file-alt' },
+            { count: {{$categories->count()}}, text: 'Total Catégories', icon: 'fa-dollar-sign' },
+            { count: {{$comments}}, text: 'Total Commentaires', icon: 'fa-file-alt' },
             { count: 364, text: 'Abonnements', icon: 'fa-globe' }
             ]}">
             <template x-for="(item, index) in stats" :key="index">

@@ -1,5 +1,5 @@
 <footer class="tw-bg-gray-900 tw-p-6 tw-pt-0 tw-text-white">
-    <div class="tw-pt-5 md:tw-ml-56 md:tw-pl-6">
+    <div class="tw-pt-2 md:tw-ml-56 md:tw-pl-6">
 
         <h2 class="tw-font-semibold tw-text-lg">CONTACTEZ NOUS</h2>
 

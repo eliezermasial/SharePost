@@ -9,8 +9,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Seting\SetingsController;
 use App\Http\Controllers\Article\ArticleController;
+use App\Http\Controllers\Comment\CommentController;
 use App\Http\Controllers\Category\CategoryController;
-use App\Http\Controllers\MediaSocial\MediaSocialController;
+use App\Http\Controllers\MediaSocial\MediaSocialController; 
 
 //routes de la page d'accueil
 Route::get('/', function () {
@@ -25,7 +26,7 @@ Route::get('/', function () {
 //routes de la page de detail
 Route::get('/article/{slug}', [DetailController::class, 'index'])->name('detail');
 
-//routes de la page de comment
+//route de la page de comment
 Route::post('/article/{id}/comment', [DetailController::class, 'comment'])->name('comment');
 
 //routes de dashboard
@@ -52,5 +53,10 @@ Route::resource('/mediaSocial', MediaSocialController::class)->middleware('admin
 
 //routes de resources des paramettres
 Route::resource('/seting', SetingsController::class)->middleware('admin');
+
+//routes de resources des commentaires
+Route::resource('/comment', CommentController::class);
+
+//Route::post('/comment/{id}', CommentController::class, 'update');
 
 require __DIR__.'/auth.php';
