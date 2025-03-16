@@ -7,8 +7,38 @@
 <div class="tw-container tw-mx-auto tw-px-4 tw-py-3">
     
     <!-- Section Populaires -->
-    <div class="tw-bg-white tw-shadow tw-rounded-md tw-p-4">
-        <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-border-yellow-500 tw-pl-2">POPULAIRES</h2>
+    <div class="tw-p- tw-flex tw-flex-col tw-gap-4">
+        <div class="tw-bg-white tw-shadow tw-rounded-md tw-p-4">
+            <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-border-yellow-500 tw-pl-2">POPULAIRES</h2>
+        </div>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper tw-grid tw-grid-cols-4 tw-gap-3">
+                @foreach ($fanous_articles as $article)
+                <!-- Article populaire -->
+                <div class="swiper-slide tw-relative tw-w-full tw-h-">
+                    <img src="{{ asset($article->imageUrl()) }}" alt="{{ $article->title }}" class="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-object-cover">
+                    
+                    <!-- Overlay pour améliorer la lisibilité -->
+                    <div class="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-bg-black tw-bg-opacity-50"></div>
+
+                    <!-- Contenu au-dessus de l'image -->
+                    <div class="tw-relative tw-z-10 tw-flex tw-flex-col tw-items-center tw-justify-center tw-h-full tw-text-[#ffffffd0] tw-text-center tw-p-4">
+                        <span class="tw-bg-green-600 tw-text-white tw-text-xs tw-font-bold tw-py-1 tw-px-2 tw-rounded">{{ $article->category->name }}</span>
+                        <p class="tw-text-gray-300 tw-text-sm">{{$article->created_at->format('M d, y') }}</p>
+                        <p class="tw-text-gray-300 tw-text-sm">Followers: {{$article->views}}</p>
+                        <h3 class="tw-font-bold tw-text-3xl tw-mt-4">{{$article->title}}</h3>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+            <!-- Pagination et navigation 
+            <div class="swiper-pagination">></div>
+            <div class="swiper-button-prev"><</div>
+            <div class="swiper-button-next">=</div>
+            -->
+        </div>
     </div>
 
     <!-- Grille principale -->
@@ -41,7 +71,9 @@
                                         </div>
                                         <div class="tw-flex tw-space-x-2">
                                             <span>👁️ {{$article->views}}</span>
-                                            <span>💬 {{$article->comments()->count()}}</span>
+                                           <a href="{{ route('detail', $article)}}" target="_blank" rel="noopener noreferrer">
+                                                <span>💬 {{$article->comments()->count()}}</span>
+                                           </a>
                                         </div>
                                     </div>
                                 </div>

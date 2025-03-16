@@ -51,7 +51,7 @@
         min-width: max-content;
       }
     </style>
-      @if (session('success'))
+    @if (session('success'))
       <script>
         iziToast.success({
           title: 'succès',
@@ -60,5 +60,31 @@
         });
       </script>
     @endif
+     <!-- Scripts 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
+     <script>
+         var swiper = new Swiper(".mySwiper", {
+             slidesPerView: 3,
+             spaceBetween: 20,
+             loop: true,
+             autoplay: {
+                 delay: 3000,
+                 disableOnInteraction: false,
+             },
+             pagination: {
+                 el: ".swiper-pagination",
+                 clickable: true,
+             },
+             navigation: {
+                 nextEl: ".swiper-button-next",
+                 prevEl: ".swiper-button-prev",
+             },
+             breakpoints: {
+                 1024: { slidesPerView: 3 },
+                 768: { slidesPerView: 2 },
+                 480: { slidesPerView: 1 },
+             }
+         });
+     </script>
   </body>
 </html>

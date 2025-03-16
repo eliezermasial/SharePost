@@ -17,9 +17,10 @@ use App\Http\Controllers\MediaSocial\MediaSocialController;
 Route::get('/', function () {
     
     $articles = Article::where('isActive', 1)->orderBy('created_at', 'Desc')->limit(10)->get();
+    $fanous_articles = Article::where('isActive', 1)->orderBy('views', 'Desc')->limit(4)->get();
     $categories = Category::orderBy('created_at', 'Desc')->where('isActive', 1)->limit(10)->with('articles')->get();
     
-    return view('home.home', ['articles' => $articles, 'categories' => $categories]);
+    return view('home.home', ['articles' => $articles, 'categories' => $categories, 'fanous_articles' => $fanous_articles]);
     
 })->name('home');
 

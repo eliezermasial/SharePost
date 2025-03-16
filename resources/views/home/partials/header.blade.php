@@ -10,7 +10,7 @@
                     $date = \Carbon\Carbon::now();
                 @endphp
                 <span>{{$date->translatedFormat('l d F Y')}} </span>
-                <a href="{{ route('login')}}" class="hover:tw-text-teal-400 tw-text-teal-600 tw-mr-4">Login</a>
+                <a href="{{ route('login')}}" target="_blank" class="hover:tw-text-teal-400 tw-text-teal-600 tw-mr-4">Login</a>
             </div>
 
             <!-- Réseaux sociaux -->
@@ -95,5 +95,4 @@
             </div>
         </div>
     @endif
-
 </header>

@@ -1,6 +1,6 @@
 @extends('home.layouts.home')
 
-@section('title', 'detail')
+@section('title', 'Detail')
 
 @section('content')
     <div class="tw-container tw-mx-auto tw-px-4 tw-py-3">
