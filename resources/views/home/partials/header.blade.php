@@ -39,7 +39,7 @@
             
                 <!-- Bouton CATEGORIE avec Alpine.js -->
                 <div  class="tw-relative">
-                    <button @click="open = !open" class="tw-text-gray-800 hover:tw-text-yellow-500 tw-flex tw-items-center">
+                    <button @click="open = !open" class="tw-text-gray-800 {{Route::currentRouteName() == 'front.category' ? 'tw-text-yellow-500' : 'tw-text-gray-800'}} hover:tw-text-yellow-500 tw-flex tw-items-center">
                         CATEGORIE ▼
                     </button>
             
@@ -55,7 +55,7 @@
                         class="tw-absolute tw-bg-white tw-shadow-md tw-z-10 tw-mt- tw-rounded-sm tw-w-40 tw-border tw-border-gray-200 tw-overflow-hidden">
 
                         @foreach ($Global_category as $category)
-                            <a href="#" class="tw-block tw-px-4 tw-py-2 hover:tw-bg-gray-100"> {{$category->name}}</a>
+                            <a href="{{ route('front.category', $category->slug)}}" class="tw-block tw-px-4 tw-py-2 hover:tw-bg-gray-100"> {{$category->name}}</a>
                         @endforeach
                     </div>
                 </div>
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    @if (Route::currentRouteName()== 'home')
+    @if (Route::currentRouteName()== 'home' || Route::currentRouteName()== 'front.category')
         <!-- Breaking News -->
         <div x-init="start = true" class="tw-bg-black tw-w-full tw-px-4 md:tw-px-6 tw-text-white tw-py-2 tw-overflow-hidden">
             <div class="tw-flex tw-items-center tw-gap-4 md:tw-px-6 tw-whitespace-nowrap">

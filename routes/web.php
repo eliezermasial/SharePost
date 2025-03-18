@@ -3,6 +3,7 @@
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\frontController;
 use \App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -10,21 +11,19 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Seting\SetingsController;
 use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Comment\CommentController;
-use App\Http\Controllers\Category\CategoryController;
-use App\Http\Controllers\MediaSocial\MediaSocialController; 
+use App\Http\Controllers\Category\CategoryController; 
+use App\Http\Controllers\MediaSocial\MediaSocialController;
 
 //routes de la page d'accueil
 Route::get('/', function () {
-    
     $articles = Article::where('isActive', 1)->orderBy('created_at', 'Desc')->limit(10)->get();
     $fanous_articles = Article::where('isActive', 1)->orderBy('views', 'Desc')->limit(4)->get();
     $categories = Category::orderBy('created_at', 'Desc')->where('isActive', 1)->limit(10)->with('articles')->get();
     
     return view('home.home', ['articles' => $articles, 'categories' => $categories, 'fanous_articles' => $fanous_articles]);
-    
 })->name('home');
 
-//routes de la page de detail
+//route de la page de detail
 Route::get('/article/{slug}', [DetailController::class, 'index'])->name('detail');
 
 //route de la page de comment
@@ -40,8 +39,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//routes de resources de categories
-Route::resource('/category', CategoryController::class)->middleware('admin');
+Route::middleware('admin')->group(function () {
+    //routes de resources de categories
+    Route::resource('/category', CategoryController::class);
+});
+
+//routes de display de categories font end
+Route::get('/categorie/{slug}', [frontController::class, 'frontDisplayCategory'])->name('front.category');
 
 //routes de resources d'article
 Route::resource('/article', ArticleController::class)->middleware('auth');

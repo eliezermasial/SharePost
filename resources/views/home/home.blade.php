@@ -71,9 +71,13 @@
                                         </div>
                                         <div class="tw-flex tw-space-x-2">
                                             <span>👁️ {{$article->views}}</span>
-                                           <a href="{{ route('detail', $article)}}" target="_blank" rel="noopener noreferrer">
-                                                <span>💬 {{$article->comments()->count()}}</span>
-                                           </a>
+                                            @if ($article->comments()->count())
+                                                <a href="{{ route('detail', $article)}}" target="_blank" rel="noopener noreferrer">
+                                                    <span>💬 {{$article->comments()->count()}}</span>
+                                                </a>
+                                            @else
+                                                <span>💬 0</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
