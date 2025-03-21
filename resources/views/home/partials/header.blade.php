@@ -59,7 +59,7 @@
                         @endforeach
                     </div>
                 </div>
-                <a href="#" class="tw-text-gray-800 hover:tw-text-yellow-500">CONTACT</a>
+                <a href="{{ route('contact.showForm')}}" class="{{Route::currentRouteName() == 'contact.showForm' ? 'tw-text-yellow-500' : 'tw-text-gray-800'}} tw-text-gray-800 hover:tw-text-yellow-500">CONTACT</a>
             </nav>
             <!-- Barre de recherche -->
             <div class="tw-relative">
@@ -69,7 +69,7 @@
         </div>
     </div>
 
-    @if (Route::currentRouteName()== 'home' || Route::currentRouteName()== 'front.category')
+    @if (Route::currentRouteName() == 'home' || Route::currentRouteName() == 'front.category' || Route::currentRouteName() == 'contact.showForm')
         <!-- Breaking News -->
         <div x-init="start = true" class="tw-bg-black tw-w-full tw-px-4 md:tw-px-6 tw-text-white tw-py-2 tw-overflow-hidden">
             <div class="tw-flex tw-items-center tw-gap-4 md:tw-px-6 tw-whitespace-nowrap">

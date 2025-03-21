@@ -48,16 +48,6 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function fontDisplayCategory (string $slug)
-    {
-        $category = Category::where('slug', $slug)->with('articles')->first();
-
-        return view('home.font-category', ['category' => $category]);
-    }
-    
-    /**
-     * Display the specified resource.
-     */
     public function show(Category $category)
     {
         //

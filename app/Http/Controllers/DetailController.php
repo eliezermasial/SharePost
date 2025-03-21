@@ -38,6 +38,5 @@ class DetailController extends Controller
         ]);
     
         return redirect()->back()->with('success', 'Comment added successfully');
-
     }
 }

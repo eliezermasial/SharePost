@@ -7,7 +7,9 @@
     <meta name="description" content="Dashboard" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" type="image/png" href="{{ asset('back_auth/assets/img/logo.png') }}" width="100" height="100">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
   </head>
 
   @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -51,6 +53,9 @@
         min-width: max-content;
       }
     </style>
+
+
+
     @if (session('success'))
       <script>
         iziToast.success({
@@ -60,7 +65,8 @@
         });
       </script>
     @endif
-     <!-- Scripts 
+
+    <!-- Scripts 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
      <script>
          var swiper = new Swiper(".mySwiper", {

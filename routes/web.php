@@ -11,11 +11,13 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Seting\SetingsController;
 use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Comment\CommentController;
-use App\Http\Controllers\Category\CategoryController; 
+use App\Http\Controllers\Contact\ContactController; 
+use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\MediaSocial\MediaSocialController;
 
 //routes de la page d'accueil
 Route::get('/', function () {
+    
     $articles = Article::where('isActive', 1)->orderBy('created_at', 'Desc')->limit(10)->get();
     $fanous_articles = Article::where('isActive', 1)->orderBy('views', 'Desc')->limit(4)->get();
     $categories = Category::orderBy('created_at', 'Desc')->where('isActive', 1)->limit(10)->with('articles')->get();
@@ -39,29 +41,39 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//routes protegées par le middleware admin
 Route::middleware('admin')->group(function () {
+
+    //routes de resources des Autheurs
+    Route::resource('/author', UserController::class);
+
+    //routes de resources des paramettres
+    Route::resource('/seting', SetingsController::class);
+
+    //routes de resources des contacts
+    Route::resource('/contact', ContactController::class);
+    
     //routes de resources de categories
     Route::resource('/category', CategoryController::class);
+    
+    //routes de resources des medias sociaux
+    Route::resource('/mediaSocial', MediaSocialController::class);
+    
 });
-
-//routes de display de categories font end
-Route::get('/categorie/{slug}', [frontController::class, 'frontDisplayCategory'])->name('front.category');
-
-//routes de resources d'article
-Route::resource('/article', ArticleController::class)->middleware('auth');
-
-//routes de resources des Autheurs
-Route::resource('/author', UserController::class)->middleware('admin');
-
-//routes de resources des medias sociaux
-Route::resource('/mediaSocial', MediaSocialController::class)->middleware('admin');
-
-//routes de resources des paramettres
-Route::resource('/seting', SetingsController::class)->middleware('admin');
 
 //routes de resources des commentaires
 Route::resource('/comment', CommentController::class);
 
-//Route::post('/comment/{id}', CommentController::class, 'update');
+//routes de resources d'article
+Route::resource('/article', ArticleController::class)->middleware('auth');
+
+//route de formulaire de contact
+Route::get('/formContact', [frontController::class, 'showForm'])->name('contact.showForm');
+
+//route de display de categories font end
+Route::get('/categorie/{slug}', [frontController::class, 'frontDisplayCategory'])->name('front.category');
+
+//route de soumission de formulaire de contact
+Route::post('/formContact', [frontController::class, 'submitForm'])->name('contact.submitForm');
 
 require __DIR__.'/auth.php';

@@ -52,11 +52,6 @@
                         <div class="tw-grid tw-grid-cols-1 tw-gap-4 tw-mt-4">
                             <div class="tw-bg-white tw-shadow tw-rounded-md tw-pb-4">
                                 <h3 class="tw-text-lg tw-font-bold tw-mb-6 tw-border-l-4 tw-py-2 tw-border-b-2 tw-border-l-yellow-500 tw-border-b-gray-200 tw-pl-2"> {{$article->comments->count()}} COMMENTAIRES</h3>
-                                @if (session()->has('success'))
-                                    <div class="tw-bg-green-100 tw-text-green-700 tw-p-2 tw-rounded-md tw-mb-4">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
                                 <div class="tw-grid tw-grid-cols-2 tw-gap-3 tw-mt-4 tw-px-4 tw-text-gray-500 tw-text-xs">
                                     @foreach ($article->comments()->where('is_active',1)->get() as $comment)
                                         <div class="tw-flex tw-flex-col tw-gap-1 tw-bg-gray-100 tw-rounded-sm tw-p-2">
