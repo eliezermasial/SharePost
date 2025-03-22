@@ -33,6 +33,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share('Global_sociaux', $socials);
         view()->share('Global_category', $categories);
         view()->share('Global_recent_articles', $articles);
-        view()->share('Global_fanous_articles', $fanous_articles);
+        view()->share('Global_popular_articles', $fanous_articles);
     }
 }

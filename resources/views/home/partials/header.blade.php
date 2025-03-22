@@ -60,10 +60,12 @@
                         x-transition:leave-start="tw-opacity-100 tw-translate-y-0"
                         x-transition:leave-end="tw-opacity-0 tw-translate-y-2"
                         class="tw-absolute tw-p-3 tw-bg-white tw-shadow-md tw-z-10 tw-mt- tw-rounded-sm tw-w-72 tw-border tw-border-gray-200 tw-overflow-hidden">
-
-                        @foreach ($Global_category as $category)
-                            <a href="{{ route('front.category', $category->slug)}}" class="tw-block tw-px-4 tw-py-2 tw-rounded-md hover:tw-bg-gray-200"> {{$category->name}}</a>
-                        @endforeach
+                        
+                        @if ($Global_category->count())
+                            @foreach ($Global_category as $category)
+                                <a href="{{ route('front.category', $category->slug)}}" class="tw-block tw-px-4 tw-py-2 tw-rounded-md hover:tw-bg-gray-200"> {{$category->name}}</a>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 <a href="{{ route('contact.showForm')}}" class="{{Route::currentRouteName() == 'contact.showForm' ? 'tw-text-yellow-500' : 'tw-text-gray-800'}} tw-text-gray-800 hover:tw-text-yellow-500">CONTACT</a>
@@ -79,7 +81,7 @@
         </div>
     </div>
 
-    @if (Route::currentRouteName() == 'home' || Route::currentRouteName() == 'front.category' || Route::currentRouteName() == 'contact.showForm')
+    @if (Route::currentRouteName() == 'home' || Route::currentRouteName() == 'search' || Route::currentRouteName() == 'front.category' || Route::currentRouteName() == 'contact.showForm')
         <!-- Breaking News -->
         <div x-init="start = true" class="tw-bg-black tw-w-full tw-px-4 md:tw-px-6 tw-text-white tw-py-2 tw-overflow-hidden">
             <div class="tw-flex tw-items-center tw-gap-4 md:tw-px-6 tw-whitespace-nowrap">
@@ -95,11 +97,13 @@
                         })"
                         class="tw-inline-flex tw-space-x-8">
                         
-                        @foreach ($Global_recent_articles->take(10) as $article)
-                            <span class="tw-inline-block tw-text-yellow-500 ">
-                                {{$article->title .'. '}}
-                            </span>
-                        @endforeach
+                        @if ($Global_recent_articles->count())
+                            @foreach ($Global_recent_articles->take(10) as $article)
+                                <span class="tw-inline-block tw-text-yellow-500 ">
+                                    {{$article->title .'. '}}
+                                </span>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

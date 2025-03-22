@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            <div class="tw-flex tw-flex-col tw-gap-10 max-md:tw-col-span-2">
+            <div class="tw-flex tw-flex-col max-md:tw-mt-10 tw-gap-10 max-md:tw-col-span-2">
 
                 <!-- Section Suivez-nous -->
                 <div class="tw-bg-white tw-shadow tw-rounded-md max-md:tw-col-span-2">
@@ -100,19 +100,21 @@
                         RECENTES ARTICLES
                     </h2>
                     <div class="tw-mt-4 tw-p-4 tw-pt-0 tw-space-y-2">
-                        @foreach ($Global_recent_articles->take(3) as $article)
-                            <div class="tw-flex tw-items-center tw-text-whit tw-p-2 tw-rounded">
-                                <div class="tw-flex tw-gap-2">
-                                    <img src="{{$article->imageUrl()}}" class="tw-w-[50%] tw-h-[35%]" alt="{{$article->title}}">
-                                    <div class="">
-                                        <div class="tw-px-2 tw-mb-2 tw-py-1 tw-w-full tw-rounded-sm tw-bg-teal-600">
-                                            <span class="tw-w-[100%] tw-font-bold-sm tw-text-white">{{$article->category->name}}</span>
+                        @if ($Global_recent_articles->count())
+                            @foreach ($Global_recent_articles->take(3) as $article)
+                                <div class="tw-flex tw-items-center tw-text-whit tw-p-2 tw-rounded">
+                                    <div class="tw-flex tw-gap-2">
+                                        <img src="{{$article->imageUrl()}}" class="tw-w-[50%] tw-h-[35%]" alt="{{$article->title}}">
+                                        <div class="">
+                                            <div class="tw-px-2 tw-mb-2 tw-py-1 tw-w-full tw-rounded-sm tw-bg-teal-600">
+                                                <span class="tw-w-[100%] tw-font-bold-sm tw-text-white">{{$article->category->name}}</span>
+                                            </div>
+                                            <h4 class=" tw-text-base tw-font-bold tw-text-[#000000bd]">{{$article->title}} </h4>
                                         </div>
-                                        <h4 class=" tw-text-base tw-font-bold tw-text-[#000000bd]">{{$article->title}} </h4>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
