@@ -27,10 +27,12 @@ class AppServiceProvider extends ServiceProvider
         $socials = MediaSocial::orderBy('id', 'Desc')->get(); //reseaux sociaux
         $categories = Category::where('isActive', 1)->orderBy('created_at', 'Desc')->get(); //categories activé est les plus recentes
         $articles = Article::where('isActive', 1)->orderBy('created_at', 'Desc')->get(); //articles activé est les plus recentes
+        $fanous_articles = Article::where('isActive', 1)->orderBy('views', 'Desc')->limit(4)->get();
 
         view()->share('Global_tags', $tags);
         view()->share('Global_sociaux', $socials);
         view()->share('Global_category', $categories);
         view()->share('Global_recent_articles', $articles);
+        view()->share('Global_fanous_articles', $fanous_articles);
     }
 }

@@ -29,32 +29,26 @@
         <!-- Infos Populaires -->
         <div>
             <h2 class="tw-font-semibold tw-text-lg tw-mb-4">INFOS POPULAIRES</h2>
-            <div class="tw-space-y-4">
+            <div class="tw-grid tw-grid-cols-2 tw-gap-3">
+                @foreach ($Global_fanous_articles as $article)
                 <div class="tw-border-b tw-border-gray-700 tw-pb-2">
-                    <span class="tw-bg-teal-600 tw-text-white tw-px-2 tw-text-xs tw-rounded">BUSINESS</span>
-                    <p class="tw-text-sm tw-mt-1">LOREM IPSUM DOLOR SIT AMET ELIT...</p>
-                    <p class="tw-text-xs tw-text-gray-400">Jan 01, 2045</p>
+                    <span class="tw-bg-teal-600 tw-text-white tw-px-2 tw-text-xs tw-rounded">{{$article->category->name}} </span>
+                    <p class="tw-text-sm tw-mt-1"> {{$article->title}} </p>
+                    <p class="tw-text-xs tw-text-gray-400">{{$article->created_at->format("M d, y")}}</p>
                 </div>
-                <div class="tw-border-b tw-border-gray-700 tw-pb-2">
-                    <span class="tw-bg-teal-600 tw-text-white tw-px-2 tw-text-xs tw-rounded">BUSINESS</span>
-                    <p class="tw-text-sm tw-mt-1">LOREM IPSUM DOLOR SIT AMET ELIT...</p>
-                    <p class="tw-text-xs tw-text-gray-400">Jan 01, 2045</p>
-                </div>
+                @endforeach
             </div>
         </div>
 
         <!-- Catégories -->
         <div>
             <h2 class="tw-font-semibold tw-text-lg tw-mb-4">CATÉGORIES</h2>
-            <div class="tw-flex tw-flex-wrap tw-gap-2">
-                <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">Politics</span>
-                <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">Business</span>
-                <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">Science</span>
-                <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">Entertainment</span>
-                <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">Health</span>
-                <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">Education</span>
-                <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">Travel</span>
-                <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">Lifestyle</span>
+            <div class="tw-grid tw-grid-cols-2 tw-gap-3">
+                @foreach ($Global_category as $category)
+                    <span class="tw-bg-gray-700 tw-text-white tw-text-xs tw-px-3 tw-py-1 tw-rounded">
+                        {{$category->name}}
+                    </span>
+                @endforeach
             </div>
         </div>
 
@@ -62,12 +56,11 @@
         <div class="">
             <h2 class="md:tw-ml-20 tw-font-semibold tw-text-lg tw-mb-4">FLICKR PHOTOS</h2>
             <div class="tw-grid tw-grid-cols-3 tw-text-end tw-gap-2 md:tw-ml-20 tw-p-0">
-                <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>
-                <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>
-                <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>
-                <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>
-                <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>
-                <div class="tw-w-16 tw-h-16 tw-bg-gray-700"></div>
+                @foreach ($Global_recent_articles->take(6) as $article)
+                    <div class="tw-w-16 tw-h-16 tw-bg-gray-700">
+                        <img src="{{$article->imageUrl()}}" class=" tw-h-full" alt="{{$article->title ? $article->title : 'aucune article'}}">
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

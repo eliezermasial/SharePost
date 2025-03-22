@@ -4,17 +4,17 @@
 
 @section('content')
 
-<div class="tw-container tw-mx-auto tw-px-4 tw-py-3">
+<div class="tw-container tw-mx-auto tw-grid tw-grid-cols-1 tw-gap-10 tw-px-4 tw-py-3">
     
     <!-- Section Populaires -->
-    <div class="tw-p- tw-flex tw-flex-col tw-gap-4">
+    <div class="tw-flex tw-flex-col tw-gap-4">
         <div class="tw-bg-white tw-shadow tw-rounded-md tw-p-4">
             <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-border-yellow-500 tw-pl-2">POPULAIRES</h2>
         </div>
 
         <div class="swiper mySwiper">
-            <div class="swiper-wrapper tw-grid tw-grid-cols-4 tw-gap-3">
-                @foreach ($fanous_articles as $article)
+            <div class="swiper-wrapper tw-grid tw-grid-cols-2 md:tw-grid-cols-4 tw-gap-3">
+                @foreach ($Global_fanous_articles as $article)
                 <!-- Article populaire -->
                 <div class="swiper-slide tw-relative tw-w-full tw-h-">
                     <img src="{{ asset($article->imageUrl()) }}" alt="{{ $article->title }}" class="tw-absolute tw-top-0 tw-left-0 tw-w-full tw-h-full tw-object-cover">
@@ -27,7 +27,7 @@
                         <span class="tw-bg-green-600 tw-text-white tw-text-xs tw-font-bold tw-py-1 tw-px-2 tw-rounded">{{ $article->category->name }}</span>
                         <p class="tw-text-gray-300 tw-text-sm">{{$article->created_at->format('M d, y') }}</p>
                         <p class="tw-text-gray-300 tw-text-sm">Followers: {{$article->views}}</p>
-                        <h3 class="tw-font-bold tw-text-3xl tw-mt-4">{{$article->title}}</h3>
+                        <h3 class="tw-font-bold tw-text-md md:tw-text-2xl tw-mt-4">{{$article->title}}</h3>
                     </div>
                 </div>
                 @endforeach
@@ -42,11 +42,11 @@
     </div>
 
     <!-- Grille principale -->
-    <div class="tw-mt-4 tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-4">
+    <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-4">
         <!-- Section de gauche : Drones et Robotique + Articles -->
-        <div class="tw-col-span-2">
+        <div class="tw-col-span-2 tw-grid tw-grid-cols-1 tw-gap-7">
             @foreach ($categories as $category)
-                <div class="tw-mb-4">
+                <div class="">
                     <!-- Titre de la catégorie -->
                     <div class="tw-flex tw-justify-between tw-items-center tw-bg-white tw-shadow tw-rounded-md tw-p-4">
                         <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-border-yellow-500 tw-pl-2">{{ $category->name }}</h2>

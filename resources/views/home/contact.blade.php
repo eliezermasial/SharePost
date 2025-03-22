@@ -100,7 +100,7 @@
                         RECENTES ARTICLES
                     </h2>
                     <div class="tw-mt-4 tw-p-4 tw-pt-0 tw-space-y-2">
-                        @foreach ($Global_recent_articles->take(5) as $article)
+                        @foreach ($Global_recent_articles->take(3) as $article)
                             <div class="tw-flex tw-items-center tw-text-whit tw-p-2 tw-rounded">
                                 <div class="tw-flex tw-gap-2">
                                     <img src="{{$article->imageUrl()}}" class="tw-w-[50%] tw-h-[35%]" alt="{{$article->title}}">
@@ -111,20 +111,6 @@
                                         <h4 class=" tw-text-base tw-font-bold tw-text-[#000000bd]">{{$article->title}} </h4>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                
-                <!-- Liste des tags enregistrés -->
-                <div class="tw-bg-white tw-shadow tw-rounded-md max-md:tw-col-span-2">
-                    <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-py-2 tw-border-b-2 tw-border-l-yellow-500 tw-border-b-gray-200 tw-pl-2">
-                        TAGS
-                    </h2>
-                    <div class="tw-mt-4 tw-p-4 tw-pt-0 tw-grid tw-grid-cols-2 tw-gap-2">
-                        @foreach ($Global_tags->take(16) as $tag)
-                            <div class="block_tag tw-border-2 tw-border-teal-900 hover:tw-text-[#ffff] hover:tw-bg-teal-900 hover:tw-p-3 tw-p-2 tw-rounded tw-h-10 tw-flex tw-items-center">
-                                <span class="tw-truncate tw-w-full">{{$tag->name}}</span>
                             </div>
                         @endforeach
                     </div>

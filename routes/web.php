@@ -19,10 +19,11 @@ use App\Http\Controllers\MediaSocial\MediaSocialController;
 Route::get('/', function () {
     
     $articles = Article::where('isActive', 1)->orderBy('created_at', 'Desc')->limit(10)->get();
-    $fanous_articles = Article::where('isActive', 1)->orderBy('views', 'Desc')->limit(4)->get();
-    $categories = Category::orderBy('created_at', 'Desc')->where('isActive', 1)->limit(10)->with('articles')->get();
     
-    return view('home.home', ['articles' => $articles, 'categories' => $categories, 'fanous_articles' => $fanous_articles]);
+    $categories = Category::orderBy('created_at', 'Desc')->where('isActive', 1)->limit(10)->with('articles')->get();
+
+    return view('home.home', ['articles' => $articles, 'categories' => $categories]);
+
 })->name('home');
 
 //route de la page de detail
@@ -63,6 +64,9 @@ Route::middleware('admin')->group(function () {
 
 //routes de resources des commentaires
 Route::resource('/comment', CommentController::class);
+
+//route de recherche
+Route::post('/search', [frontController::class, 'search'])->name('search');
 
 //routes de resources d'article
 Route::resource('/article', ArticleController::class)->middleware('auth');

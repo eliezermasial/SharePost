@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Contact;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\Contact\StoreContactRequest;
 
 class frontController extends Controller
@@ -42,5 +44,15 @@ class frontController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Message sent successfully');
+    }
+
+
+    public function search (Request $request)
+    {
+        $articles = Article::where('title', 'like', '%' . $request->search . '%')
+            ->orWhere('content', 'like', '%' . $request->search . '%')
+            ->get();
+
+        return view('home.search', ['articles' => $articles]);
     }
 }
