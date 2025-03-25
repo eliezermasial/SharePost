@@ -3,6 +3,7 @@
 @section('title', 'Detail')
 
 @section('content')
+
     <div class="tw-container tw-mx-auto tw-px-4 tw-py-3">
         
         <!-- Section Populaires -->
@@ -21,19 +22,18 @@
                 <div class="tw-mb-4">
                     <!-- Titre de la catégorie -->
                     <div class="tw-flex tw-justify-between tw-items-center tw-bg-white tw-shadow tw-rounded-md tw-p-4">
-                        <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-border-yellow-500 tw-pl-2"></h2>
+                        <h2 class="tw-text-xl tw-font-bold tw-border-l-4 tw-border-yellow-500 tw-pl-2"> {{$article->title}} </h2>
                         <a href="#" class="tw-text-[#0000007e] tw-font-semibold tw-text-sm">Voir tous</a>
                     </div>
 
-                    <div class="tw-flex tw-flex-col tw-gap-10">
+                    <div class="tw-flex tw-flex-col tw-gap-6">
 
                         <!-- Details d'article -->
                         <div class="tw-grid tw-grid-cols-1 tw-gap-4 tw-mt-4">
                             <div class="tw-bg-white tw-shadow tw-rounded-md tw-p-4">
-                                <div class="tw-bg-red tw-mb-4">
+                                <div class="tw-bg-red tw-mb-7">
                                     <img src="{{$article->imageUrl()}}" alt="">
                                 </div>
-                                <h3 class="tw-text-lg tw-font-bold tw-mt-4">{{$article->title}}</h3>
                                 <p class="tw-text-gray-600 tw-text-sm tw-mt-2">{{$article->content}} </p>
                                 <div class="tw-flex tw-justify-between tw-items-center tw-mt-4 tw-text-gray-500 tw-text-xs">
                                     <div class="tw-flex tw-gap-2">
@@ -46,16 +46,16 @@
                                     </div>
                                 </div>
                             </div>
+                            @if ($article->isSharable)
+                                <!-- share this library des buttoms de  partage -->
+                                <div class="sharethis-inline-share-buttons tw-z-0" style="z-index: 0;"></div>
+                            @endif
                         </div>
                         
-                        @if ($article->isSharable)
-                            <!-- share this library des buttoms de  partage -->
-                            <div class="sharethis-inline-share-buttons"></div>
-                        @endif
-
                         @if ($article->isComment)
+                            
                             <!-- Display commentaires -->
-                            <div class="tw-grid tw-grid-cols-1 tw-gap-4 tw-mt-4">
+                            <div class="tw-grid tw-grid-cols-1 tw-gap-4">
                                 <div class="tw-bg-white tw-shadow tw-rounded-md tw-pb-4">
                                     <h3 class="tw-text-lg tw-font-bold tw-mb-6 tw-border-l-4 tw-py-2 tw-border-b-2 tw-border-l-yellow-500 tw-border-b-gray-200 tw-pl-2"> {{$article->comments->count()}} COMMENTAIRES</h3>
                                     <div class="tw-grid tw-grid-cols-2 tw-gap-3 tw-mt-4 tw-px-4 tw-text-gray-500 tw-text-xs">
@@ -75,7 +75,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         
                             <!-- Commentaires -->
                             <div class="tw-grid tw-grid-cols-1 tw-gap-4 tw-mt-4">
@@ -119,6 +119,7 @@
                 </div>
             </div>
 
+           <!-- Section de droit : Drones et Robotique + Articles -->
             <div class="tw-flex tw-flex-col max-md:tw-mt-10 tw-gap-10 max-md:tw-col-span-2">
 
                 <!-- Section Suivez-nous -->

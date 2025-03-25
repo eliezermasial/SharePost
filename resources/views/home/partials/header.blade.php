@@ -1,5 +1,5 @@
 <!-- Header -->
-<header class="{{Route::CurrentRouteName() == 'home' ? 'tw-pb-8' : ''}}">
+<header class="{{Route::CurrentRouteName() == 'home' ? 'tw-pb-8' : ''}} tw-mt-0 tw-fixed tw-w-full tw-z-30">
     <!-- Top Bar -->
     <div class="topBar tw-bg-gray-900 tw-text-gray-300 tw-text-sm">
         <div class="tw-container tw-mx-auto tw-flex tw-justify-between tw-items-center tw-py-2 tw-px-4">
@@ -38,10 +38,11 @@
                 <a href="{{ route('home')}}" class="{{Route::CurrentRouteName() == 'home' ? 'tw-text-yellow-500' : ''}} tw-text-gray-800 tw-font-bold tw-px-3">ACCUEIL</a>
                 
                 @if (Route::currentRouteName() == 'search')
+
                     <a href="#" class="hover:tw-text-yellow-500 tw-text-yellow-500">SEARCH</a>
 
                 @elseif (Route::currentRouteName() == 'detail')
-                    <a href="#" class="tw-text-gray-800 hover:tw-text-yellow-500">POST</a>
+                    <a href="#" class="tw-text-yellow-500 hover:tw-text-yellow-500">POST</a>
                 @endif
             
                 <!-- Bouton CATEGORIE avec Alpine.js -->

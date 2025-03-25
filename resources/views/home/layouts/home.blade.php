@@ -19,19 +19,21 @@
     [x-cloak] { display: none !important; }
   </style>
 
- <body class="tw-font-sans" x-data="{ open: false, start: false }">
+ <body class="tw-font-sans" x-data="{ open: false, start: false, fixed: false  }">
 
     <!-- Header -->
     @include('home.partials.header')
 
-    @if (Route::currentRouteName() == 'home')
-      <!-- sider -->
-      @include('home.partials.sider')
-    @endif
-    
     <!-- Main Content -->
-    <main class="tw-h-full tw-bg-gray-100 tw-py-10">
+    <main class="tw-h-full tw-bg-gray-100 tw-pb-10 {{ Route::currentRouteName() == 'detail' ? 'tw-pt-40' : 'tw-pt-52'}}">
+
+      @if (Route::currentRouteName() == 'home')
+        <!-- sider -->
+        @include('home.partials.sider')
+      @endif
+
       @yield('content')
+
     </main>
 
     <!-- footer -->
