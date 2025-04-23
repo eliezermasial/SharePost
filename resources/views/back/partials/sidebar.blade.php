@@ -247,7 +247,7 @@
 </aside>
 
 
-<!-- Menu latéral -->
+<!-- Menu latéral Mobile -->
 <div>
     <!-- Overlay et Sidebar -->
     <div class="tw-fixed tw-inset-0"
@@ -290,21 +290,24 @@
             <nav class="tw-mt-10">
                 <ul>
                     <li>
-                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 tw-bg-teal-600 tw-rounded">
+                        <a href="{{ route('dashboard')}}" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 tw-bg-teal-600 tw-rounded">
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="tw-flex tw-items-center tw-gap-3 tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                        <a href="{{ route('article.index')}}" class="tw-flex tw-items-center tw-gap-3 tw-py-2 tw-px-4 hover:tw-bg-teal-600
+                            {{ Route::currentRouteName() == 'article.index' ? 'tw-bg-teal-600 tw-my-2' : ''}} ">
                             <i class="fas fa-newspaper"></i> Articles
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                        <a href="{{ route('category.index')}}" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600
+                            {{ Route::currentRouteName() == 'category.index' ? 'tw-bg-teal-600 tw-my-2' : ''}}">
                         <i class="fas fa-tags"></i> Catégories</a>
                     </li>
                     <li>
-                        <a href="#" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600">
+                        <a href="{{ route('author.index')}}" class="tw-flex tw-items-center tw-gap-3  tw-py-2 tw-px-4 hover:tw-bg-teal-600
+                            {{ Route::currentRouteName() == 'author.index' ? 'tw-bg-teal-600 tw-my-2' : ''}}">
                             <i class="fas fa-user"></i> Auteurs
                         </a>
                     </li>

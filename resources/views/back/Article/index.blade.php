@@ -38,7 +38,7 @@
                     <tbody>
                         @foreach ($articles as $article)
                             <tr class="tw-border-b">
-                                <td class="tw-py-3 tw-px-4">ART-0 {{$article->id}} </td>
+                                <td class="tw-py-3 tw-px-4">{{$article->id}} </td>
                                 <td class="tw-py-3 tw-px-4"> {{$article->title}} </td>
                                 <td class="tw-py-3 tw-px-4">
                                     <img 
@@ -68,23 +68,22 @@
                                     @endif
                                 </td>
                                 <td class="tw-py-3 tw-px-1 lg:tw-px-3">
-                                <div class="tw-flex tw-justify-between">
-                                        <a href="{{route('profile.edit')}}">
-                                            <img 
-                                                src="{{ asset('back_auth/assets/profile/'.$article->author->image) }}" 
-                                                class="tw-w-10 tw-h-10 tw-cursor-pointer tw-rounded-full tw-border"
-                                                alt="{{$article->author->image ? $article->author->name : ''}}"
-                                            >
-                                        </a>
-                                    <a href="{{route('profile.edit')}}" class="tw-text-sm tw-pt-3 hover:tw-text-teal-200">{{explode(' ', $article->author->name)[0]}}</a>
-                                </div>
+                                    <div class="tw-flex tw-justify-between">
+                                            <a href="{{route('profile.edit')}}">
+                                                <img 
+                                                    src="{{ asset('back_auth/assets/profile/'.$article->author->image) }}" 
+                                                    class="tw-w-10 tw-h-10 tw-cursor-pointer tw-rounded-full tw-border"
+                                                    alt="{{$article->author->image ? $article->author->name : ''}}"
+                                                >
+                                            </a>
+                                        <a href="{{route('profile.edit')}}" class="tw-text-sm tw-pt-3 hover:tw-text-teal-200">{{explode(' ', $article->author->name)[0]}}</a>
+                                    </div>
                                 </td>
                                 <td class="tw-py-3 tw-px-4">{{$article->category->name}} </td>
                                 <td class="tw-py-3 tw-px-4">
-                                    <div x-data="{openAction: false}" class="dropdown dropdown-action tw-flex tw-justify-around">
-                                        
+                                    <div x-data="{openAction: true}" class="dropdown dropdown-action tw-flex tw-justify-around">
                                         <div x-show="openAction" x-transition x-cloak class="tw-flex tw-flex-col tw-gap-1 tw-px-2 tw-py-2 tw-bg-[#eff5f569] tw-text-[#fff] tw-rounded-sm">
-                                            <a class="tw-bg-teal-700 hover:tw-bg-[#00968798] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border" href="{{ route('article.show', $article)}}">
+                                            <a class="tw-bg-teal-600 hover:tw-bg-[#00968798] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border" href="{{ route('article.show', $article)}}">
                                                 <i class="fas fa-eye tw-m-r-5 tw-text-[#fff]"></i> Voir
                                             </a>
                                             <a class="tw-bg-teal-700 hover:tw-bg-[#00968798] tw-border-[#12131327] tw-p-1 tw-rounded-md tw-border" href="{{ route('article.edit', $article)}}">

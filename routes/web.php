@@ -35,6 +35,9 @@ Route::post('/article/{id}/comment', [DetailController::class, 'comment'])->name
 //routes de dashboard
 Route::get('/dashboard',[DashboardController::class, 'dashbord'] )->name('dashboard')->middleware(['auth', 'verified', 'checkRole',]);
 
+//
+Route::post('/dashboard',[DashboardController::class, 'searchDashbord'] )->name('searchDashbord');
+
 //routes de profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -59,13 +62,12 @@ Route::middleware('admin')->group(function () {
     
     //routes de resources des medias sociaux
     Route::resource('/mediaSocial', MediaSocialController::class);
-    
 });
 
 //routes de resources des commentaires
 Route::resource('/comment', CommentController::class);
 
-//route de recherche
+//route de recherche partie front-End
 Route::post('/search', [frontController::class, 'search'])->name('search');
 
 //routes de resources d'article

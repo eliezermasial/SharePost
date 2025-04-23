@@ -11,8 +11,8 @@ class MediaSocial extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-            'name',
-            'lien',
-            'icon'
-        ];
+        'name',
+        'lien',
+        'icon'
+    ];
 }

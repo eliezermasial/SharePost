@@ -49,10 +49,13 @@ class frontController extends Controller
 
     public function search (Request $request)
     {
-        $articles = Article::where('title', 'like', '%' . $request->search . '%')
-            ->orWhere('content', 'like', '%' . $request->search . '%')
-            ->get();
-
-        return view('home.search', ['articles' => $articles]);
+        $request->validate([
+            'search' => 'required|string|max:255',
+        ]);
+    
+        $articles = Article::where('title', 'like' ,'%' . $request->search . '%')
+            ->orWhere('content', 'like', '%' . $request->search . '%')->get();
+            
+        return view('home.search',['articles'=> $articles] );
     }
 }

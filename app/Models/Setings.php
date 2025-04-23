@@ -11,11 +11,11 @@ class Setings extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-            'web_site_name',
-            'logo',
-            'address',
-            'phone',
-            'email',
-            'about'
+        'web_site_name',
+        'logo',
+        'address',
+        'phone',
+        'email',
+        'about'
     ];
 }

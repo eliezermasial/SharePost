@@ -32,4 +32,16 @@ class DashboardController extends Controller
             'recent_articles'=> $recent_articles
         ]);
     }
+
+    public function searchDashbord (Request $request) 
+    {
+        $request->validate([
+            'search' => 'required|string|max:255',
+        ]);
+        
+        $articles = Article::where('title', 'like', '%' . $request->search . '%')->first();
+        // ->orWhere('content', 'like', '%' . $request->search . '%')
+
+        return dd($articles);
+    }
 }

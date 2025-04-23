@@ -7,8 +7,14 @@
 
     <div class="tw-relative tw-flex tw-items-center tw-space-x-4" x-data="{ openProfile: false }">
         <!-- Barre de recherche -->
-        <input type="text" placeholder="Search here" class="tw-px-4 tw-py-1 md:tw-mr-10 tw-rounded-lg tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
-
+        <div class="tw-relative">
+            <form action="{{ route('searchDashbord')}}" method="post">
+                @csrf
+                <input type="text" name="search" placeholder="Search here" class="tw-px-4 tw-py-1 md:tw-mr-10 tw-rounded-lg tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
+                <button type="submit" class="tw-absolute tw-right-0 tw-top-0 tw-h-full tw-bg-teal-600 tw-text-white tw-px-3 tw-rounded-r-full">🔍</button>
+            </form>
+        </div>
+        
         <!-- Image de profil (clic pour ouvrir le menu) -->
         <img 
             src="{{ asset('back_auth/assets/profile/'.\Illuminate\Support\Facades\Auth::user()->image) }}" 

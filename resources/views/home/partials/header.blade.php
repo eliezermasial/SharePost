@@ -16,8 +16,8 @@
             <!-- Réseaux sociaux -->
             <div class="tw-flex tw-space-x-3">
                 @foreach ($Global_sociaux as $social)
-                    <a href="{{$social->lien}}" class="tw-text-gray-400 hover:tw-text-teal-600">
-                        <i class="fab {{$social->icon}}"></i>
+                    <a href="{{$social->lien}}" target="_blank" class="tw-text-gray-400 hover:tw-text-teal-600">
+                        <i class="fab {{$social->icon}} tw-text-md  tw-bg-[#ffffffd5] tw-text-blue-500 tw-p-2 tw-rounded-full"></i>
                     </a>
                 @endforeach
             </div>
@@ -47,12 +47,12 @@
             
                 <!-- Bouton CATEGORIE avec Alpine.js -->
                 <div  class="tw-relative">
-                    <button @click="open = !open" class="tw-text-gray-800 {{Route::currentRouteName() == 'front.category' ? 'tw-text-yellow-500' : 'tw-text-gray-800'}} hover:tw-text-yellow-500 tw-flex tw-items-center">
+                    <button  @click="open = !open" class="tw-text-gray-800 {{Route::currentRouteName() == 'front.category' ? 'tw-text-yellow-500' : 'tw-text-gray-800'}} hover:tw-text-yellow-500 tw-flex tw-items-center">
                         CATEGORIE ▼
                     </button>
             
                     <!-- Liste déroulante avec animation -->
-                    <div x-show="open" 
+                    <div x-cloak x-show="open" 
                         @click.away="open = false"
                         x-transition:enter="tw-transition tw-duration-300 tw-ease-out"
                         x-transition:enter-start="tw-opacity-0 tw-translate-y-2"
@@ -60,6 +60,7 @@
                         x-transition:leave="tw-transition tw-duration-200 tw-ease-in"
                         x-transition:leave-start="tw-opacity-100 tw-translate-y-0"
                         x-transition:leave-end="tw-opacity-0 tw-translate-y-2"
+                        
                         class="tw-absolute tw-p-3 tw-bg-white tw-shadow-md tw-z-10 tw-mt- tw-rounded-sm tw-w-72 tw-border tw-border-gray-200 tw-overflow-hidden">
                         
                         @if ($Global_category->count())
@@ -75,7 +76,7 @@
             <div class="tw-relative">
                 <form action="{{ route('search')}}" method="post">
                     @csrf
-                    <input type="text" placeholder="Rechercher..." class="tw-px-4 tw-py-1 tw-rounded-full tw-w-40 tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
+                    <input type="text" name="search" placeholder="Rechercher..." class="tw-px-4 tw-py-1 tw-rounded-full tw-w-40 tw-border-2 tw-border-[#242323b4]  focus:tw-ring focus:tw-ring-teal-600 focus:tw-border-teal-600">
                     <button type="submit" class="tw-absolute tw-right-0 tw-top-0 tw-h-full tw-bg-teal-600 tw-text-white tw-px-3 tw-rounded-r-full">🔍</button>
                 </form>
             </div>

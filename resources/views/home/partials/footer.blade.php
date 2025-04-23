@@ -6,22 +6,15 @@
             <div class="tw-flex md:tw-flex-col tw-justify-between">
                 <div>
                     <p>area City, Country</p>
-                    <p>+012 345 67890</p>
-                    <p>info@example.com</p>
+                    <p>+243 82 00 83 703</p>
+                    <p>eliezermasiala200@gmail.com</p>
                 </div>
                 <div class="tw-flex tw-space-x-2 tw-mt-4">
-                    <span class="tw-w-8 tw-h-8 tw-bg-gray-700 tw-flex tw-items-center tw-justify-center tw-rounded">
-                        <i class="fa fa-facebook"></i>
-                    </span>
-                    <span class="tw-w-8 tw-h-8 tw-bg-gray-700 tw-flex tw-items-center tw-justify-center tw-rounded">
-                        <i class="fa fa-twitter"></i>
-                    </span>
-                    <span class="tw-w-8 tw-h-8 tw-bg-gray-700 tw-flex tw-items-center tw-justify-center tw-rounded">
-                        <i class="fa fa-instagram"></i>
-                    </span>
-                    <span class="tw-w-8 tw-h-8 tw-bg-gray-700 tw-flex tw-items-center tw-justify-center tw-rounded">
-                        <i class="fa fa-linkedin"></i>
-                    </span>
+                    @foreach ($Global_sociaux as $social)
+                        <a href="{{$social->lien}}" target="_blank" class="tw-w-10 tw-h-10 tw-bg-gray-700 tw-flex tw-items-center tw-justify-center tw-rounded">
+                            <i class="fab {{$social->icon}} tw-text-xl tw-text-blue-500 tw-p-1 tw-rounded-md"></i>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -17,7 +17,6 @@ class Comment extends Model
         'message',
         'web_site',
         'article_id',
-
         'is_active',
     ];
 
